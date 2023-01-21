@@ -19,3 +19,6 @@ vim.keymap.set('n', '<leader>y', '"+y')
 
 -- Don't overwrite register when pasting in visual mode
 vim.keymap.set('x', "p", "\"_dP")
+
+
+vim.keymap.set('n', 'Q', 'gqip')

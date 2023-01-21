@@ -11,7 +11,9 @@ The work here is heavily influenced by two youtube videos
 
 ## Plugins
 
-Watching the two videos will give 
+Watching the two videos will give a good idea about what is setup here, so I
+will not go into that in details. but I will describe the 'other' plugins I
+use.
 
 ### [Projectionist](https://github.com/tpope/vim-projectionist) by Tim Pope.
 
@@ -28,6 +30,8 @@ E.g. when editing `/src/api/ping.ts`, I can hit `:A` to open
 a vertical split. `:A` jumps back to implementation
 
 #### Jump between language files
+
+Our primary product supports two languages, Danish (da) and English (en).
 
 I can quickly create a new language file, e.g. `:Eda settings-page` will open
 `/i18n/da/settings-page.json` in a new buffer (no matter if the file exists or
