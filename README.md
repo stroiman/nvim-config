@@ -3,11 +3,23 @@
 This is my neovim config. After having a vimconfig that had slowly evolved over
 about 15 years, I decided to completely redo my neovim config from scratch.
 
-The work here is heavily influenced by two youtube videos
+## Inspirations
+
+The setup here is heavily influenced by two youtube videos
 
 [ThePrimeagen, 0 to LSP : Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE)
 
 [TJ DeVries, Effective Neovim: Instance IDO](https://www.youtube.com/watch?v=stqUbv-5u2s)
+
+Another source of inspiration is [Learn Vimscript the Hard
+Way](https://learnvimscriptthehardway.stevelosh.com/), a source I read many
+years ago
+
+## Shortcuts
+
+Handy shortcuts, for configuring vim, inspired by LVTHW.
+`<leader>ev` *E*dit *v*imconfig. Opens the vim configuration.
+`<leader>sv` *S*ource *v*imconfig. Reruns the config scripts.
 
 ## Plugins
 

@@ -8,3 +8,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require("stroiman")
+
+vim.keymap.set('n', '<leader>ev', ':e $HOME/.config/nvim/init.lua<cr>')
+vim.keymap.set('n', '<leader>sv', ':so $HOME/.config/nvim/init.lua<cr>')
