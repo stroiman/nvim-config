@@ -4,24 +4,31 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
-	'eslint',
+  'tsserver',
+  'eslint',
+})
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-Space>'] = cmp.mapping.complete(),
 })
 
--- local cmp = require('cmp')
--- local cmp_select = {behavior = cmp.SelectBehavior.Select}
--- local cmp_mappings = lsp.defaults.cmp_mappings({
-	-- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	-- ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
-	-- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-	-- ['<C-Space>'] = cmp.mapping.complete(),
--- })
 
--- lsp.set_preferences({
-	-- sign_icons = { }
--- })
+lsp.on_attach(function(_, bufnr)
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
 
--- (Optional) Configure lua language server for neovim
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+end)
+
 lsp.nvim_workspace()
 
 lsp.setup()
