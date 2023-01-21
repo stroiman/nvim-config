@@ -49,3 +49,9 @@ I can quickly create a new language file, e.g. `:Eda settings-page` will open
 `/i18n/da/settings-page.json` in a new buffer (no matter if the file exists or
 not). `:Een` will jump to the corresponding English translation.
 
+### [Unimpaired](https://github.com/tpope/vim-unimpaired) by Tim Pope.
+
+A plugin I've used for a long time, it sets up some useful keymaps, e.g.
+* `]q`/`[q` - Next/prev item in quickfix list.
+* `]f`/`[f` - Next/prev file,
+
