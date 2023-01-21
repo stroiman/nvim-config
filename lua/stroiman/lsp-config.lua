@@ -7,15 +7,6 @@ lsp.ensure_installed({
   'tsserver',
   'eslint',
 })
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<tab>'] = cmp.mapping.confirm({ select = true }),
-  ['<C-Space>'] = cmp.mapping.complete(),
-})
-
 
 lsp.on_attach(function(_, bufnr)
   local nmap = function(keys, func, desc)
