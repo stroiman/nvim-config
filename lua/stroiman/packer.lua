@@ -53,4 +53,6 @@ require('packer').startup(function(use)
   }
 
   use 'mhinz/vim-startify'
+
+  use 'nkrkv/nvim-treesitter-rescript'
 end)
