@@ -5,11 +5,9 @@ require('packer').startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-	use 'rose-pine/neovim'
-	use { "ellisonleao/gruvbox.nvim", config = function()
-		vim.cmd('colorscheme gruvbox')
-	end}
-
-	use('nvim-tresitter/nvim-treesitter', { run = ':TSUpdate'})
-
+	use('rose-pine/neovim')
+	use('ellisonleao/gruvbox.nvim')
+	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+	use('nvim-treesitter/playground')
+	use('theprimeagen/harpoon')
 end)
