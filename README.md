@@ -9,17 +9,18 @@ The setup here is heavily influenced by two youtube videos
 
 [ThePrimeagen, 0 to LSP : Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE)
 
-[TJ DeVries, Effective Neovim: Instance IDO](https://www.youtube.com/watch?v=stqUbv-5u2s)
+[TJ DeVries, Effective Neovim: Instant IDE](https://www.youtube.com/watch?v=stqUbv-5u2s)
 
-Another source of inspiration is [Learn Vimscript the Hard
+Another source of inspiration is LVTHW - [Learn Vimscript the Hard
 Way](https://learnvimscriptthehardway.stevelosh.com/), a source I read many
-years ago
+years ago.
 
 ## Shortcuts
 
 Handy shortcuts, for configuring vim, inspired by LVTHW.
-`<leader>ev` *E*dit *v*imconfig. Opens the vim configuration.
-`<leader>sv` *S*ource *v*imconfig. Reruns the config scripts.
+`<leader>ve` *v*imconfig *E*dit. Opens the vim configuration.
+`<leader>vs` *v*imconfig *S*ource. Reruns the config scripts.
+`<leader>vp` *v*imconfig *P*ackersync. Runs packersync.
 
 ## Plugins
 
@@ -55,3 +56,10 @@ A plugin I've used for a long time, it sets up some useful keymaps, e.g.
 * `]q`/`[q` - Next/prev item in quickfix list.
 * `]f`/`[f` - Next/prev file,
 
+## Keyboard shortcuts
+
+### Insert mode
+
+* `jk` - Maps to `<esc>`. Much fast to type! And I never type "jk"* (LVTHW tip)
+
+\* Except when documenting my vimscript
