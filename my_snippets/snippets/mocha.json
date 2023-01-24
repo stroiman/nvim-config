@@ -1,0 +1,56 @@
+{
+    "Mocha context block.": {
+        "prefix": "ctx",
+        "body": [
+            "context(\"$1\", () => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha context block."
+    },
+    "Mocha describe block.": {
+        "prefix": "ctx",
+        "body": [
+            "describe(\"$1\", () => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha describe block."
+    },
+    "Mocha async before each block.": {
+        "prefix": "befa",
+        "body": [
+            "beforeEach(async () => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha before each block."
+    },
+    "Mocha before each block.": {
+        "prefix": "bef",
+        "body": [
+            "beforeEach(() => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha before each block."
+    },
+    "Mocha specifiction block.": {
+        "prefix": "it",
+        "body": [
+            "it(\"$1\", () => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha specification block."
+    },
+    "Mocha async specification block.": {
+        "prefix": "ita",
+        "body": [
+            "it(\"$1\", async () => {",
+            "    $0",
+            "})"
+        ],
+        "description": "Mocha specification block."
+    }
+}
