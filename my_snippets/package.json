@@ -11,6 +11,13 @@
                     "typescript"
                 ],
                 "path": "./snippets/mocha.json"
+            },
+            {
+                "language": [
+                    "javascript",
+                    "typescript"
+                ],
+                "path": "./snippets/javascript.json"
             }
         ]
     }

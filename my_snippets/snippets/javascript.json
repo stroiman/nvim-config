@@ -1,0 +1,9 @@
+{
+    "() => {}": {
+        "prefix": "f",
+        "body": [
+            "($1) => {$0}"
+        ],
+        "description": "ES6 Arror function"
+    }
+}
