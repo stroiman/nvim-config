@@ -63,3 +63,22 @@ A plugin I've used for a long time, it sets up some useful keymaps, e.g.
 * `jk` - Maps to `<esc>`. Much fast to type! And I never type "jk"* (LVTHW tip)
 
 \* Except when documenting my vimscript
+
+## Code completion
+
+My personal preferences on how to work with completion and snippets divert from
+the default configuration of most
+
+When I type letters, numbers, dots, space, enter, parenthesis, brackets, etc. I
+what the exact characters to appear on screen as I type them.
+
+So I do NOT want completion to run on enter, space, dot, or anything like that.
+
+I _almost_ never use the tab key though when coding, and the first editors I
+used with code completion had tab as the trigger. So that's why I trigger code
+completion with `<tab>`.
+
+Many use tab key for jumping between insert points in snippet. I find This
+confusing - and in earlier vim versions with vimscript, this was really
+difficult to get working propertly. Therefore, I use the keys `<C-k>`/`<C-j>`
+to jump forward/back between insert points in snippets.
