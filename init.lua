@@ -20,6 +20,6 @@ end
 
 require("stroiman.init")
 
-vim.keymap.set('n', '<leader>ve', ':e $HOME/.config/nvim/init.lua<cr>')
+vim.keymap.set('n', '<leader>ve', ':vsplit $HOME/.config/nvim/init.lua<cr>')
 vim.keymap.set('n', '<leader>vs', '<cmd>lua ReloadConfig()<cr>')
 vim.keymap.set('n', '<leader>vp', ':PackerSync<cr>')
