@@ -14,11 +14,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
       c = cmp.mapping.close(),
     }),
     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.config.disable,
 
   -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   -- ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
   -- ['<tab>'] = cmp.mapping.confirm({ select = true }),
-  -- ['<CR>'] = cmp.config.disable,
   -- ['<C-Space>'] = cmp.mapping.complete(),
 })
 

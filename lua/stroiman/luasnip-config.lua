@@ -4,8 +4,8 @@ local types = require "luasnip.util.types"
 -- require("ls.loaders.from_snipmate").load({ paths = '/Users/peter/.config/nvim/my_snippets' })
 -- require("ls.loaders.from_vscode").load()
 
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = '/Users/peter/.config/nvim/my_snippets' })
--- vim.cmd('command! LuaSnipEdit :lua require("ls.loaders").edit_snippet_files()')
+require("luasnip.loaders.from_vscode").lazy_load({ paths = '/Users/peter/.config/nvim/my_snippets' })
+vim.cmd('command! LuaSnipEdit :lua require("ls.loaders").edit_snippet_files()')
 
 ls.config.set_config {
     history = true,

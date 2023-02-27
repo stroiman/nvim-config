@@ -1,0 +1,23 @@
+{
+    "createslice": {
+        "prefix": "createslice",
+        "body": [
+            "import { createSlice } from '@reduxjs/toolkit'",
+            "",
+            "const prefix = '$1'",
+            "",
+            "type State = {}",
+            "",
+            "const initialState: State = {}",
+            "",
+            "const slice = createSlice({",
+            "    initialState,",
+            "    name: prefix,",
+            "    reducers: {}",
+            "})",
+            "",
+            "export default slice.reducer"
+        ],
+        "description": "Create slice"
+    }
+}

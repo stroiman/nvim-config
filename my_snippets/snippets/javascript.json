@@ -5,5 +5,33 @@
             "($1) => {$0}"
         ],
         "description": "ES6 Arror function"
+    },
+    "knex.raw(...)": {
+        "prefix": "k",
+        "body": [
+            "return knex.raw(`",
+            "    $0",
+            "`);"
+        ],
+        "description": "Knex migration file body"
+    },
+    "iots": {
+        "prefix": "iots",
+        "body": [
+            "import * as t from \"io-ts\""
+        ],
+        "description": "import io-ts"
+    },
+    "router": {
+        "prefix": "router",
+        "body": [
+            "import { Router } from 'express'",
+            "",
+            "const router = Router()",
+            "",
+            "$0",
+            "export default router"
+        ],
+        "description": "Add express router"
     }
 }

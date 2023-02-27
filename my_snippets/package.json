@@ -8,7 +8,8 @@
             {
                 "language": [
                     "javascript",
-                    "typescript"
+                    "typescript",
+                    "typescriptreact"
                 ],
                 "path": "./snippets/mocha.json"
             },
@@ -18,6 +19,13 @@
                     "typescript"
                 ],
                 "path": "./snippets/javascript.json"
+            },
+            {
+                "language": [
+                    "javascript",
+                    "typescript"
+                ],
+                "path": "./snippets/react.json"
             }
         ]
     }

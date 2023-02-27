@@ -9,7 +9,7 @@
         "description": "Mocha context block."
     },
     "Mocha describe block.": {
-        "prefix": "ctx",
+        "prefix": "des",
         "body": [
             "describe(\"$1\", () => {",
             "    $0",

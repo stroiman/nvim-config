@@ -1,11 +1,19 @@
 require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
-  use('tpope/vim-unimpaired')
+    use('tpope/vim-unimpaired')
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+    -- use('nvim-telescope/telescope-project.nvim')
+    use{
+        'ahmedkhalf/project.nvim',
+        config = function()
+            require("project_nvim").setup {
+            }
+        end
+    }
 	use('rose-pine/neovim')
 	use('ellisonleao/gruvbox.nvim')
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
@@ -52,7 +60,8 @@ require('packer').startup(function(use)
     end
   }
 
-  use 'mhinz/vim-startify'
+  -- use 'mhinz/vim-startify'
 
   use 'nkrkv/nvim-treesitter-rescript'
+  use 'pacha/vem-tabline'
 end)
