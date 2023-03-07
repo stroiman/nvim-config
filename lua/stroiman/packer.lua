@@ -14,6 +14,9 @@ require('packer').startup(function(use)
             }
         end
     }
+    use('vim-scripts/vimwiki')
+    use('mattn/calendar-vim')
+
 	use('rose-pine/neovim')
 	use('ellisonleao/gruvbox.nvim')
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
