@@ -1,3 +1,10 @@
+vim.cmd([[
+  augroup packer_user_config
+    au!
+    au BufWritePost packer.lua source <afile> | PackerSync
+  augroup end
+]])
+
 require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
     use('tpope/vim-unimpaired')
