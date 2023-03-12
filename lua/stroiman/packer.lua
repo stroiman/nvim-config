@@ -14,8 +14,7 @@ vim.cmd([[
   augroup end
 ]])
 
-local status, packer = pcall(require("packer"))
-
+local status, packer = pcall(require, 'packer')
 if not status then
     return
 end
@@ -42,6 +41,8 @@ return packer.startup(function(use)
 
 	use('rose-pine/neovim')
 	use('ellisonleao/gruvbox.nvim')
+	use('bluz71/vim-nightfly-guicolors')
+
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
