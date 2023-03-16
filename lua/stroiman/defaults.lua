@@ -33,7 +33,7 @@ opt.backspace = 'indent,eol,start'
 opt.clipboard:append('unnamedplus')
 
 opt.splitright = true
-opt.splitbelow = true
+opt.splitbelow = false
 
 opt.iskeyword:append('-')
 
