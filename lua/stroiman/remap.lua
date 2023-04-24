@@ -22,3 +22,6 @@ vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('x', "p", "\"_dP")
 
 vim.keymap.set('n', 'Q', 'gqip')
+
+vim.keymap.set('n', '<leader>cy', ':e $HOME/.config/yabai/yabairc<cr>')
+vim.keymap.set('n', '<leader>cs', ':e $HOME/.skhdrc<cr>')
