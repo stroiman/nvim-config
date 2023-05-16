@@ -41,6 +41,7 @@ return packer.startup(function(use)
 
 	use('rose-pine/neovim')
 	use('ellisonleao/gruvbox.nvim')
+  use { "catppuccin/nvim", as = "catppuccin" }
 	use('bluz71/vim-nightfly-guicolors')
 
     use("kyazdani42/nvim-web-devicons")
