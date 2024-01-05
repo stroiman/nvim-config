@@ -90,6 +90,12 @@ return packer.startup(function(use)
   -- use 'mhinz/vim-startify'
 
   use 'nkrkv/nvim-treesitter-rescript'
+  use {
+    'kevinhwang91/nvim-ufo',
+    requires = {
+      { 'kevinhwang91/promise-async' }
+    }
+  }
 
   if is_bootstrap then
       require("packer").sync()
