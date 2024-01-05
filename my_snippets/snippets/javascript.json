@@ -33,5 +33,10 @@
             "export default router"
         ],
         "description": "Add express router"
+    },
+    "uuid": {
+      "prefix": "uuid",
+      "body": [ "import { v4 as uuid } from \"uuid\"" ],
+      "description": "Add uuid import"
     }
 }
