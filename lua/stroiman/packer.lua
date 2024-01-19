@@ -20,7 +20,6 @@ if not status then
 end
 
 return packer.startup(function(use)
-  use('wbthomason/packer.nvim')
   use('tpope/vim-unimpaired')
   use('christoomey/vim-tmux-navigator')
   use {
@@ -51,6 +50,14 @@ return packer.startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+
+  -- LSP and completion
+  use {
+    'wbthomason/packer.nvim',
+    config = function()
+      require('mason').setup()
+    end
+  }
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -73,6 +80,8 @@ return packer.startup(function(use)
       {'rafamadriz/friendly-snippets'}, -- Optional
     }
   }
+
+  -- Navigation
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
