@@ -27,6 +27,7 @@ return packer.startup(function(use)
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use {'nvim-telescope/telescope-ui-select.nvim' }
   -- use('nvim-telescope/telescope-project.nvim')
   use{
     'ahmedkhalf/project.nvim',
