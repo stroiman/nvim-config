@@ -1,4 +1,5 @@
-local ls = require("luasnip")
+local ok, ls = pcall(require,"luasnip")
+if ok then
 local types = require "luasnip.util.types"
 
 -- require("ls.loaders.from_snipmate").load({ paths = '/Users/peter/.config/nvim/my_snippets' })
@@ -36,3 +37,5 @@ end, { silent = true })
 -- vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
 -- vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
 -- vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+
+end
