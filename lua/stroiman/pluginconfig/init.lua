@@ -4,4 +4,5 @@ require("stroiman.pluginconfig.treesitter")
 require("stroiman.pluginconfig.nvim-neo-tree-config")
 require("stroiman.pluginconfig.mason")
 require("stroiman.pluginconfig.lsp-config")
+require("stroiman.pluginconfig.none-ls")
 
