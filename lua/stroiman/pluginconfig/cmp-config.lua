@@ -1,8 +1,6 @@
 local cmpOk, cmp = pcall(require, "cmp")
 
 if cmpOk then
-  local cmp = require("cmp")
-
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -37,10 +35,9 @@ if cmpOk then
     }),
 
     sources = cmp.config.sources({
-      -- { name = "nvim_lsp" },
+      { name = "nvim_lsp" },
+    }, {
       { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = "buffer" },
     }, {
@@ -76,9 +73,13 @@ if cmpOk then
   })
 
   -- -- Set up lspconfig.
-  -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  -- require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
-  --   capabilities = capabilities,
-  -- })
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local lspconfig = require("lspconfig")
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  lspconfig.tsserver.setup({
+    capabilities = capabilities,
+  })
+  lspconfig.html.setup({
+    capabilities = capabilities,
+  })
 end
