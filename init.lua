@@ -9,8 +9,8 @@ function _G.ReloadConfig()
   vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
 
+require("stroiman.init")
+
 vim.keymap.set('n', '<leader>ve', ':tabnew $HOME/.config/nvim/init.lua<cr>')
 vim.keymap.set('n', '<leader>vs', '<cmd>lua ReloadConfig()<cr>')
 vim.keymap.set('n', '<leader>vp', ':PackerSync<cr>')
-
-require("stroiman.init")
