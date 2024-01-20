@@ -6,4 +6,5 @@ require("stroiman.pluginconfig.mason")
 require("stroiman.pluginconfig.lsp-config")
 require("stroiman.pluginconfig.none-ls")
 require("stroiman.pluginconfig.cmp-config")
+require("stroiman.pluginconfig.debug-config")
 

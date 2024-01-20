@@ -107,8 +107,8 @@ return packer.startup(function(use)
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "neovim/nvim-lspconfig",
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
 
       -- " For vsnip users.
       -- Plug 'hrsh7th/cmp-vsnip'
@@ -127,6 +127,19 @@ return packer.startup(function(use)
       -- " Plug 'dcampos/cmp-snippy'}
       -- }
     },
+  })
+  -- Debugging
+  use({
+    "mfussenegger/nvim-dap",
+    requires = {
+      "rcarriga/nvim-dap-ui",
+    },
+  })
+use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use({
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
   })
 
   if is_bootstrap then
