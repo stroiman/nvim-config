@@ -6,6 +6,12 @@ let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr,div,script,a,nav'
 au FileType vimwiki setlocal ts=2 sts=2 sw=2 et tw=80
 
 let g:vimwiki_list = [
+      \ {'path': '~/Documents/Knowledge graphs/Professional',
+      \  'diary_rel_path': 'journals/',
+      \  'syntax': 'markdown', 'ext': '.md'},
+      \ {'path': '~/Documents/Obsidian/Professional Vault',
+      \  'diary_rel_path': 'journals/',
+      \  'syntax': 'markdown', 'ext': '.md'},
       \ {'path': '~/Documents/Logseq/',
       \  'diary_rel_path': 'journals/',
       \  'syntax': 'markdown', 'ext': '.md'},
