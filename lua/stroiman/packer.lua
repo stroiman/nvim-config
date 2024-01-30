@@ -62,7 +62,7 @@ return packer.startup(function(use)
   use({ "williamboman/mason.nvim" })
   use({ "williamboman/mason-lspconfig.nvim" })
   use("neovim/nvim-lspconfig")
-  use("nvimtools/none-ls.nvim")
+  -- use("nvimtools/none-ls.nvim")
 
   -- Navigation
   use({
