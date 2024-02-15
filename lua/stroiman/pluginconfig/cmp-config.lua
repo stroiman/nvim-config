@@ -73,13 +73,13 @@ if cmpOk then
   })
 
   -- -- Set up lspconfig.
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  local lspconfig = require("lspconfig")
+  -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  -- local lspconfig = require("lspconfig")
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  lspconfig.tsserver.setup({
-    capabilities = capabilities,
-  })
-  lspconfig.html.setup({
-    capabilities = capabilities,
-  })
+  -- lspconfig.tsserver.setup({
+  --   capabilities = capabilities,
+  -- })
+  -- lspconfig.html.setup({
+  --   capabilities = capabilities,
+  -- })
 end
