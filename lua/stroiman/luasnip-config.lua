@@ -37,4 +37,24 @@ if ok then
   -- vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
   -- vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
   -- vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+
+  local s = ls.s;
+  local i = ls.insert_node;
+  local rep = require("luasnip.extras").rep
+  local fmt = require("luasnip.extras.fmt").fmt
+
+  ls.add_snippets("all", {
+    ls.parser.parse_snippet("expand", "--this is what was expanded!"),
+  })
+  ls.add_snippets("javascript", {
+    s("req", fmt('const {} = require ("{}");', {i(1), rep(1)} ))
+  })
+  ls.add_snippets("typescript", {
+    s("import", fmt('import {} from "{}";', {i(1), rep(1)} ))
+  })
+  ls.add_snippets("typescriptreact", {
+    ls.parser.parse_snippet("dc", '<div className="$1">\n  $0\n</div>'),
+    ls.parser.parse_snippet("d", '<div>\n  $0\n</div>'),
+  })
 end
+
