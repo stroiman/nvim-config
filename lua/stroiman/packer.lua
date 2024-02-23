@@ -99,6 +99,8 @@ return packer.startup(function(use)
     },
   })
 
+  use( 'rmagatti/auto-session' )
+
   use({
     "hrsh7th/nvim-cmp",
     requires = {
