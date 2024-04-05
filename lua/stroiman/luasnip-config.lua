@@ -43,18 +43,27 @@ if ok then
   local rep = require("luasnip.extras").rep
   local fmt = require("luasnip.extras.fmt").fmt
 
-  ls.add_snippets("all", {
-    ls.parser.parse_snippet("expand", "--this is what was expanded!"),
-  })
   ls.add_snippets("javascript", {
-    s("req", fmt('const {} = require ("{}");', {i(1), rep(1)} ))
-  })
-  ls.add_snippets("typescript", {
+    s("req", fmt('const {} = require ("{}");', {i(1), rep(1)} )),
     s("import", fmt('import {} from "{}";', {i(1), rep(1)} ))
   })
-  ls.add_snippets("typescriptreact", {
+  ls.add_snippets("typescript", {
+    ls.parser.parse_snippet("faketimers", "let clock: sinon.SinonFakeTimers\n\nbeforeEach(() => {\n  clock = sinon.useFakeTimers();\n})\n\nafterEach(() => {\n  clock.restore()\n})\n")
+  })
+  ls.filetype_extend("typescript", {"javascript"})
+  ls.add_snippets("react", {
+    ls.parser.parse_snippet("h1", '<h1>\n  $0\n</h1>'),
+    ls.parser.parse_snippet("h2", '<h2>\n  $0\n</h2>'),
+    ls.parser.parse_snippet("h3", '<h3>\n  $0\n</h3>'),
+    ls.parser.parse_snippet("h4", '<h4>\n  $0\n</h4>'),
+    ls.parser.parse_snippet("h5", '<h5>\n  $0\n</h5>'),
+    ls.parser.parse_snippet("h6", '<h6>\n  $0\n</h6>'),
+    ls.parser.parse_snippet("h7", '<h7>\n  $0\n</h7>'),
     ls.parser.parse_snippet("dc", '<div className="$1">\n  $0\n</div>'),
     ls.parser.parse_snippet("d", '<div>\n  $0\n</div>'),
   })
+  ls.add_snippets("typescriptreact", {
+  })
+  ls.filetype_extend("typescriptreact", {"typescript"})
 end
 
