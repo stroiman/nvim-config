@@ -2,7 +2,7 @@ local ok, configs = pcall(require, 'nvim-treesitter.configs')
 if ok then
   configs.setup {
     -- A list of parser names, or "all" (the four listed parsers should always be installed)
-    ensure_installed = { "lua", "vim", "javascript", "typescript" },
+    ensure_installed = { "lua", "vim", "javascript", "typescript", "go" },
     sync_install = false,
 
     -- Automatically install missing parsers when entering buffer

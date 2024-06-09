@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use("kyazdani42/nvim-web-devicons")
 
   use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+  use 'nkrkv/nvim-treesitter-rescript'
   -- use('nvim-treesitter/playground')
   use("theprimeagen/harpoon")
   use("mbbill/undotree")
@@ -62,7 +63,7 @@ return packer.startup(function(use)
   use({ "williamboman/mason.nvim" })
   use({ "williamboman/mason-lspconfig.nvim" })
   use("neovim/nvim-lspconfig")
-  -- use("nvimtools/none-ls.nvim")
+  use("nvimtools/none-ls.nvim")
 
   -- Navigation
   use({

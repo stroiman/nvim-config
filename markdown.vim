@@ -1,0 +1,1 @@
+setlocal textwith=80

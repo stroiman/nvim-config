@@ -9,6 +9,13 @@ let g:vimwiki_list = [
       \ {'path': '~/Documents/Knowledge graphs/Professional',
       \  'diary_rel_path': 'journals/',
       \  'syntax': 'markdown', 'ext': '.md'},
+      \ {'path': '~/vimwiki/prof/', 'diary_rel_path': '',
+      \ 'template_path':  '~/vimwiki/prof/templates',
+      \ 'path_html': '~/vimwiki/prof/html',
+      \ 'template_default': 'def_template',
+      \ 'template_ext': '.html',
+      \ 'list_margin': 1
+      \ },
       \ {'path': '~/Documents/Obsidian/Professional Vault',
       \  'diary_rel_path': 'journals/',
       \  'syntax': 'markdown', 'ext': '.md'},
@@ -18,13 +25,6 @@ let g:vimwiki_list = [
       \ {'path': '~/Documents/Logseq personal/',
       \  'diary_rel_path': 'journals/',
       \  'syntax': 'markdown', 'ext': '.md'},
-      \ {'path': '~/vimwiki/prof/', 'diary_rel_path': '',
-      \ 'template_path':  '~/vimwiki/prof/templates',
-      \ 'path_html': '~/vimwiki/prof/html',
-      \ 'template_default': 'def_template',
-      \ 'template_ext': '.html',
-      \ 'list_margin': 1
-      \ },
       \ {
         \ 'path': s:webwikipath,
         \ 'template_path':  s:webwikipath . 'templates',

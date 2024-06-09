@@ -1,5 +1,10 @@
 let g:projectionist_heuristics = {}
 
+let g:projectionist_heuristics['dune-project'] = {
+      \ 'lib/*.ml': { 'command': 'src', 'alternate': 'test/{}_test.ml' },
+      \ 'test/*_test.ml': { 'command': 'src', 'alternate': 'lib/{}.ml' }
+      \ }
+
 let g:projectionist_heuristics['App.js'] = {
       \ '*.jsx': { 'command': 'src', 'alternate': '{}.test.js' },
       \ '*.js': { 'command': 'src', 'alternate': '{}.test.js' },
