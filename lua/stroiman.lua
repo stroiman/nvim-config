@@ -12,7 +12,5 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	"tpope/vim-fugitive"
-})
+require("lazy").setup("plugins", {})
 

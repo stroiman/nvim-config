@@ -1,12 +1,16 @@
-function Reload() 
-	for name, _ in pairs(package.loaded) do
-		if name:match("^stroiman") then
-			package.loaded[name] = nil
-		end
-	end
+vim.opt.expandtab=true
+vim.opt.tabstop=2
 
-	dofile(vim.env.MYVIMRC)
-	vim.notify("Configuration reloaded!", vim.log.levels.INFO)
+
+function Reload() 
+  for name, _ in pairs(package.loaded) do
+    if name:match("^stroiman") then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
+  vim.notify("Configuration reloaded!", vim.log.levels.INFO)
 end
 
 
@@ -18,6 +22,6 @@ vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 
 if not vim.g.lazy_loaded then
-	require("stroiman.plugins")
-	vim.g.lazy_loaded = true
+  require("stroiman")
+  vim.g.lazy_loaded = true
 end
