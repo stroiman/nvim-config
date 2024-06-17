@@ -1,6 +1,7 @@
 vim.opt.expandtab=true
 vim.opt.tabstop=2
-
+vim.opt.shiftwidth=2
+vim.opt.softtabstop=2
 
 function Reload() 
   for name, _ in pairs(package.loaded) do
@@ -10,7 +11,7 @@ function Reload()
   end
 
   dofile(vim.env.MYVIMRC)
-  vim.notify("Configuration reloaded!", vim.log.levels.INFO)
+  vim.notify("Configuration reloaded", vim.log.levels.INFO)
 end
 
 
@@ -21,7 +22,5 @@ vim.keymap.set("n", "<leader>ve", ":tabnew +tcd\\ %:p:h $MYVIMRC<cr>")
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 
-if not vim.g.lazy_loaded then
-  require("stroiman")
-  vim.g.lazy_loaded = true
-end
+require("stroiman")
+
