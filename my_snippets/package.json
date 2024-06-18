@@ -1,32 +1,24 @@
 {
-    "name": "stroimans-snippets",
-    "engines": {
-        "vscode": "^1.11.0"
-    },
-    "contributes": {
-        "snippets": [
-            {
-                "language": [
-                    "javascript",
-                    "typescript",
-                    "typescriptreact"
-                ],
-                "path": "./snippets/mocha.json"
-            },
-            {
-                "language": [
-                    "javascript",
-                    "typescript"
-                ],
-                "path": "./snippets/javascript.json"
-            },
-            {
-                "language": [
-                    "javascript",
-                    "typescript"
-                ],
-                "path": "./snippets/react.json"
-            }
-        ]
-    }
+  "name": "stroimans-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "javascript",
+          "typescript"
+        ],
+        "path": "./snippets/javascript.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript"
+        ],
+        "path": "./snippets/react.json"
+      }
+    ]
+  }
 }
