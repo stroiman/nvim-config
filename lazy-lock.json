@@ -4,5 +4,6 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "projectionist": { "branch": "master", "commit": "729f3630a4c19e52e1fd825802d2a1659daeaf48" },
   "telescope": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "treesitter": { "branch": "master", "commit": "2e9c346aefda680bd14ebf40a50c2897fd637bc2" },
   "vim-fugitive": { "branch": "master", "commit": "64d6cafb9dcbacce18c26d7daf617ebb96b273f3" }
 }
