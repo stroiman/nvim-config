@@ -9,6 +9,7 @@ function _G.ReloadConfig()
   vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
 
+vim.g.mapleader = " "
 require("stroiman.init")
 
 vim.keymap.set('n', '<leader>ve', ':tabnew $HOME/.config/nvim/init.lua<cr>')
