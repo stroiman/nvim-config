@@ -1,8 +1,8 @@
 return {
-	"tpope/vim-fugitive",
+  "tpope/vim-fugitive",
   { 
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
   }
 }
