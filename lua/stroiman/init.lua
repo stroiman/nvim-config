@@ -1,3 +1,3 @@
 require("stroiman.bootstrap")
 
-vim.cmd(":colorscheme catppuccin")
+-- vim.cmd(":colorscheme catppuccin")

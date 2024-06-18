@@ -33,3 +33,4 @@ vim.keymap.set("n", "-", ":Ex<cr>")
 
 require("stroiman")
 
+vim.cmd "colorscheme catppuccin"
