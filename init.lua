@@ -5,7 +5,7 @@ vim.opt.softtabstop=2
 vim.opt.swapfile=false
 vim.g.netrw_banner=0
 vim.g.netrw_liststyle=3
-vim.g.netrw_list_hide= '^\\.git\\/$'
+vim.g.netrw_list_hide= [[^\.git\/$]]
 
 function Reload() 
   -- local buf = vim.api.nvim_create_buf(true, true)
@@ -33,4 +33,4 @@ vim.keymap.set("n", "-", ":Ex<cr>")
 
 require("stroiman")
 
-vim.cmd "colorscheme catppuccin"
+vim.cmd.colorscheme "catppuccin"
