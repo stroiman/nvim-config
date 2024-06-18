@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("User", {
     vim.cmd("Lazy sync")
   end
 })
+
+function reload_buffer() 
+  local path = vim.fn.expand "%:t:r"
+  vim.cmd ("Lazy reload " .. path)
+end
+
+vim.keymap.set("n", "<leader>vr", reload_buffer)
+vim.keymap.set("n", "<leader>vl", ":Lazy<cr>")
