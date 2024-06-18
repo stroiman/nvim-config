@@ -17,6 +17,7 @@ if not vim.g.stroiman_lazy_loaded then
 end
 
 local group = vim.api.nvim_create_augroup("stroiman_lazy_events", {});
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyReload",
   group = group,
@@ -25,10 +26,10 @@ vim.api.nvim_create_autocmd("User", {
   end
 })
 
-function reload_buffer() 
+function reload_plugin() 
   local path = vim.fn.expand "%:t:r"
   vim.cmd ("Lazy reload " .. path)
 end
 
-vim.keymap.set("n", "<leader>vr", reload_buffer)
+vim.keymap.set("n", "<leader>vr", reload_plugin)
 vim.keymap.set("n", "<leader>vl", ":Lazy<cr>")
