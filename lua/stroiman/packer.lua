@@ -47,7 +47,6 @@ return packer.startup(function(use)
   use("kyazdani42/nvim-web-devicons")
 
   use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-  use 'nkrkv/nvim-treesitter-rescript'
   -- use('nvim-treesitter/playground')
   use("theprimeagen/harpoon")
   use("mbbill/undotree")
