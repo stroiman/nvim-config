@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>vs", Reload)
 vim.keymap.set("n", "<leader>ve", ":tabnew +tcd\\ %:p:h $MYVIMRC<cr>")
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
-vim.keymap.set("n", "-", ":Ex<cr>")
+vim.keymap.set("n", "-", [[:Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
 
 require("stroiman")
 
