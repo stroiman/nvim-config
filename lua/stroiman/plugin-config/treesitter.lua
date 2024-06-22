@@ -3,8 +3,7 @@ vim.api.nvim_create_autocmd("User", {
   group = "stroiman_plugin_load",
   callback = function(ev, opts)
     if ev.data == "treesitter" then
-      local treesitter = require("nvim-treesitter")
-      treesitter.setup({
+      require("nvim-treesitter").setup({
         ensure_installed = { "lua", "javascript", "typescript", "ocaml", "go" },
         sync_install = false,
         highlight = { enable = true },
