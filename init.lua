@@ -35,6 +35,7 @@ vim.cmd [[silent! unmap <C-a>]]
 vim.cmd [[silent! unmap <C-x>]]
 
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<leader>vs", Reload)
 vim.keymap.set("n", "<leader>ve", ":tabnew +tcd\\ %:p:h $MYVIMRC<cr>")
