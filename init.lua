@@ -5,6 +5,7 @@ vim.opt.softtabstop=2
 vim.opt.swapfile=false
 vim.opt.splitright=true
 vim.opt.splitbelow=false
+vim.opt.signcolumn="yes"
 vim.opt.nu=true
 vim.g.netrw_banner=0
 vim.g.netrw_liststyle=3
@@ -32,8 +33,6 @@ end
 -- Particularly <C-a> interferes with my tmux config (common to use C-a)
 vim.cmd [[silent! unmap <C-a>]]
 vim.cmd [[silent! unmap <C-x>]]
-
--- Add keyboard shortcuts
 
 vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<esc>")
