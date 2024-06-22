@@ -32,3 +32,4 @@ vim.diagnostic.config({
   underline = { min = vim.diagnostic.severity.ERROR }
 
 })
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
