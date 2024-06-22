@@ -25,6 +25,15 @@ function Reload()
   vim.notify("Configuration reloaded", vim.log.levels.INFO)
 end
 
+-- Remove some default keyboard shortcuts that are annoying
+
+-- unmap <C-a> & <C-x> - increment/decrement .
+-- `silent!` to suppress errors when re-sourcing vimrc file
+-- Particularly <C-a> interferes with my tmux config (common to use C-a)
+vim.cmd [[silent! unmap <C-a>]]
+vim.cmd [[silent! unmap <C-x>]]
+
+-- Add keyboard shortcuts
 
 vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<esc>")
