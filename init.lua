@@ -11,7 +11,7 @@ vim.g.netrw_banner=0
 vim.g.netrw_liststyle=3
 vim.g.netrw_list_hide= [[^\.git\/$]]
 
-function Reload() 
+function Reload()
   -- local buf = vim.api.nvim_create_buf(true, true)
   for name, _ in pairs(package.loaded) do
     -- print(string.format("Package: %s", name))
