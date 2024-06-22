@@ -7,6 +7,7 @@ function setup_lspconfig()
   })
   local lspconfig = require("lspconfig");
   lspconfig.tsserver.setup({})
+  lspconfig.lua_ls.setup({})
 end
 
 vim.api.nvim_create_autocmd("User", {
