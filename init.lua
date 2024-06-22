@@ -1,3 +1,5 @@
+-- Affects CursorHold (highlight current symbol)
+vim.opt.updatetime=1000
 vim.opt.expandtab=true
 vim.opt.tabstop=2
 vim.opt.shiftwidth=2
@@ -49,6 +51,8 @@ vim.keymap.set("n", "<leader>-k", [[:40Hex! <bar> :sil! /<C-R>=expand("%:t")<CR>
 -- Tip from https://medium.com/@kadek/understanding-vims-jump-list-7e1bfc72cdf0
 vim.keymap.set("n", "<expr>j", [[(v:count > 1 ? "m'" . v:count : '') . 'j']])
 vim.keymap.set("n", "<expr>k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']])
+vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
+vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 
 require("stroiman")
 

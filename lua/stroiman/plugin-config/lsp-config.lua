@@ -1,4 +1,4 @@
-function setup_lspconfig()
+local setup_lspconfig = function()
   print("Config")
   require("mason").setup({
   })
@@ -8,12 +8,14 @@ function setup_lspconfig()
   local lspconfig = require("lspconfig");
   lspconfig.tsserver.setup({})
   lspconfig.lua_ls.setup({})
+  lspconfig.stylua.setup({})
+  lspconfig.prettierd.setup({})
 end
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyLoad",
   group = "stroiman_plugin_load",
-  callback = function(ev, opts)
+  callback = function(ev)
     if ev.data == "lsp-config" then
       setup_lspconfig()
     end
@@ -33,3 +35,20 @@ vim.diagnostic.config({
 
 })
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+vim.cmd [[
+augroup stroiman_lsp_config
+  au!
+  autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+  autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+  autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  autocmd BufWritePre *.js,*.ts lua vim.lsp.buf.format()
+  autocmd BufWritePre *.lua lua vim.lsp.buf.format()
+augroup end
+]]
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded"
+  }
+)
