@@ -12,7 +12,14 @@ if not vim.g.stroiman_lazy_loaded then
   end
   vim.opt.rtp:prepend(lazypath)
 
-  require("lazy").setup("plugins")
+  require("lazy").setup("plugins", {
+    ui = {
+      border = "rounded"
+    },
+    change_detection = {
+      notify = false
+    }
+  })
   vim.g.stroiman_lazy_loaded = true
 end
 
