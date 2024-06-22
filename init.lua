@@ -42,6 +42,10 @@ vim.keymap.set("n", "<leader>ve", ":tabnew +tcd\\ %:p:h $MYVIMRC<cr>")
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 vim.keymap.set("n", "-", [[:Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-h", [[:30Lex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-l", [[:30Lex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-j", [[:40Hex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-k", [[:40Hex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
 
 require("stroiman")
 
