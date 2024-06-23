@@ -13,12 +13,6 @@ local setup_lspconfig = function()
   lspconfig.lua_ls.setup({
     capabilities = capabilities
   })
-  lspconfig.stylua.setup({
-    capabilities = capabilities
-  })
-  lspconfig.prettierd.setup({
-    capabilities = capabilities
-  })
 end
 
 vim.api.nvim_create_autocmd("User", {
@@ -38,7 +32,14 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.diagnostic.config({
   virtual_text = false,
-  signs = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󱈸', -- '',
+      [vim.diagnostic.severity.WARN] = '', -- '',
+      [vim.diagnostic.severity.INFO] = '', -- '',
+      [vim.diagnostic.severity.HINT] = '' --''
+    }
+  },
   float = { border = "rounded" },
   underline = { min = vim.diagnostic.severity.ERROR }
 
