@@ -6,10 +6,19 @@ local setup_lspconfig = function()
     automatic_installation = true,
   })
   local lspconfig = require("lspconfig");
-  lspconfig.tsserver.setup({})
-  lspconfig.lua_ls.setup({})
-  lspconfig.stylua.setup({})
-  lspconfig.prettierd.setup({})
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  lspconfig.tsserver.setup({
+    capabilities = capabilities
+  })
+  lspconfig.lua_ls.setup({
+    capabilities = capabilities
+  })
+  lspconfig.stylua.setup({
+    capabilities = capabilities
+  })
+  lspconfig.prettierd.setup({
+    capabilities = capabilities
+  })
 end
 
 vim.api.nvim_create_autocmd("User", {
