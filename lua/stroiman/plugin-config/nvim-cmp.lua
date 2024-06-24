@@ -70,5 +70,3 @@ vim.api.nvim_create_autocmd("User", {
 if vim.g.stroiman_cmp_loaded then
   setup_cmp()
 end
-
-vim.api.nvim_create_user_command("RestartCmpConfig", setup_cmp, {})

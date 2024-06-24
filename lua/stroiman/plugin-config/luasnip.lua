@@ -35,36 +35,22 @@ local setup_luasnip = function()
     end
   end, { silent = true })
 
-  -- ls.setup({
-  --   snip_env = {
-  --     s = function(...)
-  --       local snip = ls.s(...)
-  --       -- we can't just access the global `ls_file_snippets`, since it will be
-  --       -- resolved in the environment of the scope in which it was defined.
-  --       table.insert(getfenv(2).ls_file_snippets, snip)
-  --     end,
-  --
-  --     parse = function(...)
-  --       local snip = ls.parser.parse_snippet(...)
-  --       table.insert(getfenv(2).ls_file_snippets, snip)
-  --     end,
-  --     -- remaining definitions.
-  --   },
-  -- })
-
   vim.keymap.set("i", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
   vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
 
-  local s = ls.s
-  local i = ls.insert_node
-  local rep = require("luasnip.extras").rep
-  local fmt = require("luasnip.extras.fmt").fmt
-
   vim.g.stroiman_luasnip_loaded = true
   vim.keymap.set("n", "<leader><leader>se", require("luasnip.loaders").edit_snippet_files)
 end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LuasnipPreExpand",
+  group = vim.api.nvim_create_augroup("stroiman_luasnip", {}),
+  callback = function()
+    vim.cmd [[let &undolevels = &undolevels]]
+  end
+})
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyLoad",
@@ -75,12 +61,3 @@ vim.api.nvim_create_autocmd("User", {
     end
   end
 })
-
-
-if vim.g.stroiman_luasnip_loaded then
-  setup_luasnip()
-end
-
-vim.cmd [[
-    command! LuaSnipEdit :lua require("luasnip.loaders").edit_snippet_files()
-  ]]
