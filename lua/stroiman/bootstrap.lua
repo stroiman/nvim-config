@@ -33,9 +33,9 @@ vim.api.nvim_create_autocmd("User", {
   end
 })
 
-function reload_plugin() 
+local reload_plugin = function()
   local path = vim.fn.expand "%:t:r"
-  vim.cmd ("Lazy reload " .. path)
+  vim.cmd("Lazy reload " .. path)
 end
 
 vim.keymap.set("n", "<leader>vr", reload_plugin)
