@@ -1,4 +1,4 @@
-local win_events = vim.api.nvim_create_augroup("stroiman_win_events", { })
+local win_events = vim.api.nvim_create_augroup("stroiman_win_events", {})
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = win_events,
@@ -8,8 +8,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
       vim.cmd [[
         if winnr('$') < 3
           wincmd L
+          vertical resize 80
         endif
-        ]]
-      end
+      ]]
     end
-  })
+  end
+})
