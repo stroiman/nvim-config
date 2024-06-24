@@ -1,12 +1,13 @@
 local setup_lspconfig = function()
-  print("Config")
   require("mason").setup({
   })
   require("mason-lspconfig").setup({
     automatic_installation = true,
   })
   local lspconfig = require("lspconfig");
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local lsp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
+  capabilities = vim.tbl_deep_extend('force', capabilities, lsp_default_capabilities)
   lspconfig.tsserver.setup({
     capabilities = capabilities
   })
