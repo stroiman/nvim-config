@@ -5,12 +5,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function(ev)
     local filetype = vim.fn.getbufvar(ev.buf, "&filetype")
     if (filetype == "help") then
-      vim.cmd [[
-        if winnr('$') < 3
+      local winnr = vim.fn.winnr("$")
+      local winsize = vim.fn.winwidth(0)
+      if winnr < 3 and winsize >= 140 then
+        vim.cmd [[
           wincmd L
           vertical resize 80
-        endif
       ]]
+      end
     end
   end
 })
