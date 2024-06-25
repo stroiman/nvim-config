@@ -56,6 +56,48 @@ augroup stroiman_lsp_config
 augroup end
 ]]
 
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "stroiman_lsp_config",
+  callback = function(event)
+    local map = function(keys, func, description)
+      local desc = nil
+      if description ~= nil then
+        desc = "LSP: " .. description
+      end
+      vim.keymap.set("n", keys, func, { buffer = event.buf, desc })
+    end
+
+    map('<leader>cr', vim.lsp.buf.rename)
+    map('<leader>clc', function() vim.lsp.buf.clear(event.client_id, event.buf) end)
+    map('<leader>cld', function()
+      print("Lenslens")
+      local lenses = vim.lsp.codelens.get(event.buf)
+      print("Lenses" .. vim.inspect(lenses))
+      if #lenses > 0 then
+        vim.lsp.codelens.display(
+          lenses,
+          event.buf,
+          event.client_id
+        )
+      end
+    end)
+    map('<leader>ch', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end
+    )
+
+    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+      buffer = event.buf,
+      group = "stroiman_lsp_config",
+      callback = function()
+        print "Refresh lenses"
+        vim.lsp.codelens.refresh({ bufnr = event.buf })
+      end
+    })
+  end
+})
+
 local border = "rounded"
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border })
