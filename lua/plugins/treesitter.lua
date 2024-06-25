@@ -3,4 +3,4 @@ return {
   name = "treesitter",
   build = ":TSUpdate",
   event = "VeryLazy"
-} 
+}
