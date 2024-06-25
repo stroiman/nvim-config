@@ -39,9 +39,13 @@ local setup_luasnip = function()
   vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
   vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+  vim.keymap.set("n", "<leader><leader>se", function()
+    require("luasnip.loaders").edit_snippet_files({
+      edit = function(file) vim.cmd.tabnew(file) end
+    })
+  end)
 
   vim.g.stroiman_luasnip_loaded = true
-  vim.keymap.set("n", "<leader><leader>se", require("luasnip.loaders").edit_snippet_files)
 end
 
 vim.api.nvim_create_autocmd("User", {
@@ -61,3 +65,7 @@ vim.api.nvim_create_autocmd("User", {
     end
   end
 })
+
+if vim.g.stroiman_luasnip_loaded then
+  setup_luasnip()
+end
