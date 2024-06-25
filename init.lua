@@ -12,14 +12,10 @@ vim.opt.nu = true
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = [[^\.git\/$]]
 
-function Reload()
-  -- local buf = vim.api.nvim_create_buf(true, true)
+local reload = function()
   for name, _ in pairs(package.loaded) do
-    -- print(string.format("Package: %s", name))
-    -- vim.fn.appendbufline(buf, "$", name)
     if name:match("^stroiman") then
       package.loaded[name] = nil
-    else
     end
   end
 
@@ -31,7 +27,7 @@ local load_init_file = function()
   if vim.fn.getcwd() == vim.fn.stdpath('config') then
     vim.cmd "e $MYVIMRC"
   else
-    vim.cmd "tabnew +tcd\\ %:p:h $MYVIMRC"
+    vim.cmd [[tabnew +tcd\ %:p:h $MYVIMRC]]
   end
 end
 
@@ -48,7 +44,7 @@ vim.cmd [[
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
-vim.keymap.set("n", "<leader>vs", Reload)
+vim.keymap.set("n", "<leader>vs", reload)
 vim.keymap.set("n", "<leader>vw", function()
   vim.cmd [[w]]
   Reload()
