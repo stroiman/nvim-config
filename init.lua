@@ -28,6 +28,14 @@ function Reload()
   vim.notify("Configuration reloaded", vim.log.levels.INFO)
 end
 
+local load_init_file = function()
+  if vim.fn.getcwd() == vim.fn.stdpath('config') then
+    vim.cmd "e $MYVIMRC"
+  else
+    vim.cmd "tabnew +tcd\\ %:p:h $MYVIMRC"
+  end
+end
+
 -- Remove some default keyboard shortcuts that are annoying
 
 -- unmap <C-a> & <C-x> - increment/decrement .
@@ -42,7 +50,11 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<leader>vs", Reload)
-vim.keymap.set("n", "<leader>ve", ":tabnew +tcd\\ %:p:h $MYVIMRC<cr>")
+vim.keymap.set("n", "<leader>vw", function()
+  vim.cmd [[w]]
+  Reload()
+end)
+vim.keymap.set("n", "<leader>ve", load_init_file)
 vim.keymap.set("n", "<leader>vmm", ":messages<cr>")
 vim.keymap.set("n", "<leader>vmc", ":messages clear<cr>")
 vim.keymap.set("n", "<C-s>", ":w<cr>")
