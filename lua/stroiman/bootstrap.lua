@@ -39,4 +39,4 @@ local reload_plugin = function()
 end
 
 vim.keymap.set("n", "<leader>vr", reload_plugin)
-vim.keymap.set("n", "<leader>vl", ":Lazy<cr>")
+vim.keymap.set("n", "<leader>vp", ":Lazy<cr>")
