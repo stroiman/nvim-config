@@ -1,4 +1,7 @@
 return {
+  s("fn", fmta("function ()\n  <>\nend", { i(0) })),
+  s("lfn", fmta("local <> = function ()\n  <>\nend", { i(1), i(0) })),
+  -- Configuration code for lua
   s("setup", fmt([[local setup_{a} = function()
     {}
 
