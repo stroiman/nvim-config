@@ -10,7 +10,6 @@ vim.opt.splitbelow = false
 vim.opt.signcolumn = "yes"
 vim.opt.nu = true
 vim.g.netrw_banner = 0
--- vim.g.netrw_liststyle = 3
 vim.g.netrw_list_hide = [[^\.git\/$]]
 
 function Reload()
