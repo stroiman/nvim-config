@@ -12,6 +12,8 @@ local setup_lspconfig = function()
   lspconfig.tsserver.setup({ capabilities })
   lspconfig.lua_ls.setup({ capabilities })
   lspconfig.ocamllsp.setup({ capabilities })
+
+  vim.g.stroiman_lsp_loaded = true
 end
 
 vim.api.nvim_create_autocmd("User", {
@@ -101,3 +103,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local border = "rounded"
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border })
+
+if vim.g.stroiman_lsp_loaded then
+  setup_lspconfig()
+end
