@@ -7,18 +7,11 @@ local setup_lspconfig = function()
   local lspconfig = require("lspconfig");
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   local lsp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
-  local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-  }
 
   capabilities = vim.tbl_deep_extend('force', capabilities, lsp_default_capabilities)
-  lspconfig.tsserver.setup({
-    capabilities = capabilities
-  })
-  lspconfig.lua_ls.setup({
-    capabilities = capabilities
-  })
+  lspconfig.tsserver.setup({ capabilities })
+  lspconfig.lua_ls.setup({ capabilities })
+  lspconfig.ocamllsp.setup({ capabilities })
 end
 
 vim.api.nvim_create_autocmd("User", {
@@ -63,8 +56,6 @@ augroup stroiman_lsp_config
 augroup end
 ]]
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded"
-  }
-)
+local border = "rounded"
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border })
