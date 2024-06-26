@@ -1,6 +1,6 @@
 return {
-  { "williamboman/mason.nvim",           name = "mason" },
-  { "williamboman/mason-lspconfig.nvim", name = "mason-lspconfig" },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
   {
     "neovim/nvim-lspconfig",
     name = "lsp-config",
