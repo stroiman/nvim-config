@@ -47,7 +47,7 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<leader>vs", reload)
 vim.keymap.set("n", "<leader>vw", function()
   vim.cmd [[w]]
-  Reload()
+  reload()
 end)
 vim.keymap.set("n", "<leader>ve", load_init_file)
 vim.keymap.set("n", "<leader>vmm", ":messages<cr>")
