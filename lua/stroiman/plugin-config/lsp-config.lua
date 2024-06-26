@@ -1,6 +1,5 @@
 local setup_lspconfig = function()
-  require("mason").setup({
-  })
+  require("mason").setup({})
   require("mason-lspconfig").setup({
     automatic_installation = true,
   })
@@ -9,9 +8,55 @@ local setup_lspconfig = function()
   local lsp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
   capabilities = vim.tbl_deep_extend('force', capabilities, lsp_default_capabilities)
-  lspconfig.tsserver.setup({ capabilities })
-  lspconfig.lua_ls.setup({ capabilities })
-  lspconfig.ocamllsp.setup({ capabilities })
+  lspconfig.tsserver.setup({
+    capabilities,
+    settings = {
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true
+        }
+      },
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true
+        }
+      }
+    }
+  })
+  lspconfig.lua_ls.setup({
+    settings = {
+      Lua = {
+        runtime = { version = 'LuaJIT' },
+        hint = { enable = true },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            '${3rd}/luv/library',
+            ---@diagnostic disable-next-line: deprecated
+            unpack(vim.api.nvim_get_runtime_file('', true)),
+          }
+        },
+        completion = {
+          callSnippet = 'Replace'
+        }
+      }
+    }
+  })
+  -- lspconfig.ocamllsp.setup({ capabilities })
 
   vim.g.stroiman_lsp_loaded = true
 end
@@ -35,10 +80,10 @@ vim.diagnostic.config({
   virtual_text = false,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '󱈸', -- '',
+      [vim.diagnostic.severity.ERROR] = '', -- '🛑', -- '',
       [vim.diagnostic.severity.WARN] = '', -- '', -- '',
-      [vim.diagnostic.severity.INFO] = '', -- '', -- '', -- '',
-      [vim.diagnostic.severity.HINT] = '', -- '' --''
+      [vim.diagnostic.severity.INFO] = '', -- '', -- '', -- '',
+      [vim.diagnostic.severity.HINT] = '…', -- '❔' , '' --''
     }
   },
   float = { border = "rounded" },
@@ -46,6 +91,9 @@ vim.diagnostic.config({
 
 })
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
+-- vim.keymap.set("n", "<leader>cr", function()
+--   vim.lsp.buf.code_action({ only = "refactor" })
+-- end)
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.cmd [[
 augroup stroiman_lsp_config
@@ -70,7 +118,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc })
     end
 
-    map('<leader>cr', vim.lsp.buf.rename)
+    -- map('<leader>cr', vim.lsp.buf.rename)
+    map("gd", vim.lsp.buf.definition)
+    -- map("gr", vim.lsp.buf.references)
+    map("<leader>cr", function()
+      vim.lsp.buf.code_action({ only = "refactor" })
+    end)
     map('<leader>clc', function() vim.lsp.buf.clear(event.client_id, event.buf) end)
     map('<leader>cld', function()
       print("Lenslens")
@@ -85,6 +138,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
     end)
     map('<leader>ch', function()
+      ---@diagnostic disable-next-line: missing-parameter
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end
     )
@@ -93,7 +147,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       buffer = event.buf,
       group = "stroiman_lsp_config",
       callback = function()
-        print "Refresh lenses"
         vim.lsp.codelens.refresh({ bufnr = event.buf })
       end
     })
