@@ -13,5 +13,6 @@ return {
     config = function()
       -- vim.cmd.colorscheme "gruvbox"
     end
-  }
+  },
+  "kyazdani42/nvim-web-devicons"
 }

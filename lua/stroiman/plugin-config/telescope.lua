@@ -1,4 +1,24 @@
-function make_builtin(name)
+local setup_telescope = function()
+  require("telescope").setup()
+
+
+  vim.g.stroiman_telescope_setup = true;
+end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyLoad",
+  group = "stroiman_plugin_load",
+  callback = function(ev)
+    if ev.data == "telescope" then
+      setup_telescope()
+    end
+  end
+})
+
+if vim.g.stroiman_telescope_setup then
+  setup_telescope()
+end
+local function make_builtin(name)
   return function()
     require("telescope.builtin")[name]()
   end
