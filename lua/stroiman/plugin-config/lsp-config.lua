@@ -124,33 +124,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>cr", function()
       vim.lsp.buf.code_action({ only = "refactor" })
     end)
-    map('<leader>clc', function() vim.lsp.buf.clear(event.client_id, event.buf) end)
-    map('<leader>cld', function()
-      print("Lenslens")
-      local lenses = vim.lsp.codelens.get(event.buf)
-      print("Lenses" .. vim.inspect(lenses))
-      if #lenses > 0 then
-        vim.lsp.codelens.display(
-          lenses,
-          event.buf,
-          event.client_id
-        )
-      end
+    map("<leader>clc", function()
+      vim.lsp.buf.clear(event.client_id, event.buf)
     end)
-    map('<leader>ch', function()
+    -- map('<leader>cld', function()
+    --   print("Lenslens")
+    --   local lenses = vim.lsp.codelens.get(event.buf)
+    --   print("Lenses" .. vim.inspect(lenses))
+    --   if #lenses > 0 then
+    --     vim.lsp.codelens.display(
+    --       lenses,
+    --       event.buf,
+    --       event.client_id
+    --     )
+    --   end
+    -- end)
+    map("<leader>ch", function()
       ---@diagnostic disable-next-line: missing-parameter
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end
-    )
+    end)
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-      buffer = event.buf,
-      group = "stroiman_lsp_config",
-      callback = function()
-        vim.lsp.codelens.refresh({ bufnr = event.buf })
-      end
-    })
-  end
+    -- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+    --   buffer = event.buf,
+    --   group = "stroiman_lsp_config",
+    --   callback = function()
+    --     vim.lsp.codelens.refresh({ bufnr = event.buf })
+    --   end
+    -- })
+  end,
 })
 
 local border = "rounded"
