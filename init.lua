@@ -67,8 +67,8 @@ vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 
 require("stroiman")
 
--- vim.cmd.colorscheme "catppuccin"
---
+vim.cmd.colorscheme "catppuccin"
+
 function P(args)
   print(vim.inspect(args))
   return args
