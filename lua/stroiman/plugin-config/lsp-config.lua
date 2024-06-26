@@ -3,58 +3,58 @@ local setup_lspconfig = function()
   require("mason-lspconfig").setup({
     automatic_installation = true,
   })
-  local lspconfig = require("lspconfig");
+  local lspconfig = require("lspconfig")
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local lsp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local lsp_default_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  capabilities = vim.tbl_deep_extend('force', capabilities, lsp_default_capabilities)
+  capabilities = vim.tbl_deep_extend("force", capabilities, lsp_default_capabilities)
   lspconfig.tsserver.setup({
     capabilities,
     settings = {
       javascript = {
         inlayHints = {
-          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
           includeInlayFunctionParameterTypeHints = true,
           includeInlayVariableTypeHints = true,
           includeInlayVariableTypeHintsWhenTypeMatchesName = true,
           includeInlayPropertyDeclarationTypeHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true
-        }
+          includeInlayEnumMemberValueHints = true,
+        },
       },
       typescript = {
         inlayHints = {
-          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
           includeInlayFunctionParameterTypeHints = true,
           includeInlayVariableTypeHints = true,
           includeInlayVariableTypeHintsWhenTypeMatchesName = true,
           includeInlayPropertyDeclarationTypeHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true
-        }
-      }
-    }
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
   })
   lspconfig.lua_ls.setup({
     settings = {
       Lua = {
-        runtime = { version = 'LuaJIT' },
+        runtime = { version = "LuaJIT" },
         hint = { enable = true },
         workspace = {
           checkThirdParty = false,
           library = {
-            '${3rd}/luv/library',
+            "${3rd}/luv/library",
             ---@diagnostic disable-next-line: deprecated
-            unpack(vim.api.nvim_get_runtime_file('', true)),
-          }
+            unpack(vim.api.nvim_get_runtime_file("", true)),
+          },
         },
         completion = {
-          callSnippet = 'Replace'
-        }
-      }
-    }
+          callSnippet = "Replace",
+        },
+      },
+    },
   })
   -- lspconfig.ocamllsp.setup({ capabilities })
 
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd("User", {
     if ev.data == "lsp-config" then
       setup_lspconfig()
     end
-  end
+  end,
 })
 
 -- vim.keymap.set("n", "<leader>vm", setup_lspconfig)
@@ -80,22 +80,21 @@ vim.diagnostic.config({
   virtual_text = false,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '', -- '🛑', -- '',
-      [vim.diagnostic.severity.WARN] = '', -- '', -- '',
-      [vim.diagnostic.severity.INFO] = '', -- '', -- '', -- '',
-      [vim.diagnostic.severity.HINT] = '…', -- '❔' , '' --''
-    }
+      [vim.diagnostic.severity.ERROR] = "", -- '🛑', -- '',
+      [vim.diagnostic.severity.WARN] = "", -- '', -- '',
+      [vim.diagnostic.severity.INFO] = "", -- '', -- '', -- '',
+      [vim.diagnostic.severity.HINT] = "…", -- '❔' , '' --''
+    },
   },
   float = { border = "rounded" },
-  underline = { min = vim.diagnostic.severity.ERROR }
-
+  underline = { min = vim.diagnostic.severity.ERROR },
 })
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 -- vim.keymap.set("n", "<leader>cr", function()
 --   vim.lsp.buf.code_action({ only = "refactor" })
 -- end)
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-vim.cmd [[
+vim.cmd([[
 augroup stroiman_lsp_config
   au!
   autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
@@ -104,8 +103,7 @@ augroup stroiman_lsp_config
   autocmd BufWritePre *.js,*.ts lua vim.lsp.buf.format()
   autocmd BufWritePre *.lua lua vim.lsp.buf.format()
 augroup end
-]]
-
+]])
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "stroiman_lsp_config",

@@ -24,10 +24,10 @@ local reload = function()
 end
 
 local load_init_file = function()
-  if vim.fn.getcwd() == vim.fn.stdpath('config') then
-    vim.cmd "e $MYVIMRC"
+  if vim.fn.getcwd() == vim.fn.stdpath("config") then
+    vim.cmd("e $MYVIMRC")
   else
-    vim.cmd [[tabnew +tcd\ %:p:h $MYVIMRC]]
+    vim.cmd([[tabnew +tcd\ %:p:h $MYVIMRC]])
   end
 end
 
@@ -36,17 +36,17 @@ end
 -- unmap <C-a> & <C-x> - increment/decrement .
 -- Particularly <C-a> interferes with my tmux config (common to use C-a)
 -- `silent!` to suppress errors when re-sourcing vimrc file
-vim.cmd [[
+vim.cmd([[
   silent! unmap <C-a>
   silent! unmap <C-x>
-]]
+]])
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<leader>vs", reload)
 vim.keymap.set("n", "<leader>vw", function()
-  vim.cmd [[w]]
+  vim.cmd([[w]])
   reload()
 end)
 vim.keymap.set("n", "<leader>ve", load_init_file)
@@ -67,7 +67,7 @@ vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 
 require("stroiman")
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
 
 function P(args)
   print(vim.inspect(args))
