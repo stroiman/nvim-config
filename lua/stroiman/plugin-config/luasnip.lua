@@ -35,6 +35,12 @@ local setup_luasnip = function()
     end
   end, { silent = true })
 
+  vim.keymap.set({ "i", "s" }, "<C-l>", function()
+    if ls.choice_active() then
+      ls.change_choice(1)
+    end
+  end, { silent = true })
+
   vim.keymap.set("i", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
