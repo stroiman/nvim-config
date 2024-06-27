@@ -1,66 +1,40 @@
 local setup_lspconfig = function()
+  local lspconfig = require("lspconfig")
+  local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+  local cmp_nvim_capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = vim.tbl_deep_extend("force", client_capabilities, cmp_nvim_capabilities)
+
   require("mason").setup({})
   require("mason-lspconfig").setup({
     ensure_installed = {
       "lua_ls",
-      "tsserver"
+      "tsserver",
     },
     automatic_installation = true,
+    handlers = {
+      function(server_name)
+        print("Configure lsp server " .. server_name)
+        require("lspconfig")[server_name].setup({ capabilities })
+      end,
+      ["tsserver"] = function()
+        require("stroiman.lsp-config.tsserver").setup({ capabilities })
+      end,
+      ["lua_ls"] = function()
+        require("stroiman.lsp-config.lua_ls").setup({ capabilities })
+      end,
+    },
   })
-  local lspconfig = require("lspconfig")
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local lsp_default_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  capabilities = vim.tbl_deep_extend("force", capabilities, lsp_default_capabilities)
-  lspconfig.tsserver.setup({
-    capabilities,
-    settings = {
-      javascript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
+  require("mason-tool-installer").setup({
+    ensure_installed = {
+      "eslint_d",
+      "prettierd",
+      "stylua",
+      "pylint",
+      "black",
     },
+    run_on_start = true,
   })
-  lspconfig.lua_ls.setup({
-    settings = {
-      Lua = {
-        runtime = { version = "LuaJIT" },
-        hint = { enable = true },
-        workspace = {
-          checkThirdParty = false,
-          library = {
-            "${3rd}/luv/library",
-            ---@diagnostic disable-next-line: deprecated
-            unpack(vim.api.nvim_get_runtime_file("", true)),
-          },
-        },
-        completion = {
-          callSnippet = "Replace",
-        },
-      },
-    },
-  })
-  -- lspconfig.ocamllsp.setup({ capabilities })
 
   vim.g.stroiman_lsp_loaded = true
 end
