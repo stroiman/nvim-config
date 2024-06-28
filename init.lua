@@ -35,13 +35,11 @@ end
 
 -- unmap <C-a> & <C-x> - increment/decrement .
 -- Particularly <C-a> interferes with my tmux config (common to use C-a)
--- `silent!` to suppress errors when re-sourcing vimrc file
-vim.cmd([[
-  silent! unmap <C-a>
-  silent! unmap <C-x>
-]])
+vim.keymap.set("n", "<C-a>", "<nop>")
+vim.keymap.set("n", "<C-x>", "<nop>")
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<leader>vs", reload)
