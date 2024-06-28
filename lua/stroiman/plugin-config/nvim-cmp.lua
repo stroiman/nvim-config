@@ -1,11 +1,11 @@
 local setup_cmp = function()
   -- Set up nvim-cmp.
-  local cmp = require 'cmp'
+  local cmp = require("cmp")
 
   cmp.setup({
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body)
+        require("luasnip").lsp_expand(args.body)
       end,
     },
     window = {
@@ -20,20 +20,19 @@ local setup_cmp = function()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable,
-      ["<ESC>"] = cmp.mapping(cmp.mapping.close(), { "i", "c" }),
+      -- ["<ESC>"] = cmp.mapping(cmp.mapping.close(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
       ["<Tab>"] = cmp.mapping.confirm({ select = true }),
     }),
-    sources = cmp.config.sources(
-      {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-      }, {
-        { name = 'buffer' },
-      })
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+    }, {
+      { name = "buffer" },
+    }),
   })
 
   -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -64,7 +63,7 @@ vim.api.nvim_create_autocmd("User", {
     if ev.data == "nvim-cmp" then
       setup_cmp()
     end
-  end
+  end,
 })
 
 if vim.g.stroiman_cmp_loaded then
