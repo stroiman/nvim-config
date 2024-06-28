@@ -1,7 +1,5 @@
 local setup_lualine = function()
-  print("Load lualine")
   require("lualine").setup({
-
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "diagnostics" },
@@ -10,6 +8,7 @@ local setup_lualine = function()
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
+    extensions = { "fugitive", "quickfix" },
   })
 
   vim.g.stroiman_lualine_setup = true

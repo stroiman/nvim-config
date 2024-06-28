@@ -5,7 +5,6 @@
 local M = {}
 
 M.setup = function(config)
-  print("Configure tsserver")
   local lspconfig = require("lspconfig")
   lspconfig.tsserver.setup({
     capabilities = config.capabilities,

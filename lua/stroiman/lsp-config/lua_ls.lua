@@ -5,7 +5,6 @@
 local M = {}
 
 M.setup = function(config)
-  print("Configure lua server")
   local lspconfig = require("lspconfig")
   lspconfig.lua_ls.setup({
     capabilities = config.capabilities,
