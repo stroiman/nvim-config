@@ -63,8 +63,6 @@ vim.keymap.set("n", "<expr>k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']])
 vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
 vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 
-vim.keymap.set("n", "<leader>gg", ":Git<cr>")
-
 require("stroiman")
 
 vim.cmd.colorscheme("catppuccin")

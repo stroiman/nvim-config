@@ -1,5 +1,4 @@
 return {
-  "tpope/vim-fugitive",
   "christoomey/vim-tmux-navigator",
   "mbbill/undotree",
   {
@@ -12,7 +11,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme "gruvbox"
-    end
+    end,
   },
-  "kyazdani42/nvim-web-devicons"
+  "kyazdani42/nvim-web-devicons",
 }
