@@ -8,7 +8,10 @@ vim.opt.swapfile = false
 vim.opt.splitright = true
 vim.opt.splitbelow = false
 vim.opt.signcolumn = "yes"
-vim.opt.nu = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.relativenumber = false
+vim.opt.number = true
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = [[^\.git\/$]]
 
@@ -37,7 +40,6 @@ end
 -- Particularly <C-a> interferes with my tmux config (common to use C-a)
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
