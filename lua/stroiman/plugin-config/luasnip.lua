@@ -47,7 +47,9 @@ local setup_luasnip = function()
   vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
   vim.keymap.set("n", "<leader><leader>se", function()
     require("luasnip.loaders").edit_snippet_files({
-      edit = function(file) vim.cmd.tabnew(file) end
+      edit = function(file)
+        vim.cmd.tabnew(file)
+      end,
     })
   end)
 
@@ -58,8 +60,8 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "LuasnipPreExpand",
   group = vim.api.nvim_create_augroup("stroiman_luasnip", {}),
   callback = function()
-    vim.cmd [[let &undolevels = &undolevels]]
-  end
+    vim.cmd([[let &undolevels = &undolevels]])
+  end,
 })
 
 vim.api.nvim_create_autocmd("User", {
@@ -69,7 +71,7 @@ vim.api.nvim_create_autocmd("User", {
     if ev.data == "luasnip" then
       setup_luasnip()
     end
-  end
+  end,
 })
 
 if vim.g.stroiman_luasnip_loaded then
