@@ -17,12 +17,6 @@ local setup_luasnip = function()
 
   require("luasnip.loaders.from_lua").load()
 
-
-  vim.keymap.set("i", "\\ss", function()
-    if ls.expand_or_jumpable() then
-      ls.expand_or_jump()
-    end
-  end)
   vim.keymap.set({ "i", "s" }, "<C-k>", function()
     if ls.expand_or_jumpable() then
       ls.expand_or_jump()
