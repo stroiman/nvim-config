@@ -65,9 +65,18 @@ vim.keymap.set("n", "<expr>k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']])
 vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
 vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 
-require("stroiman")
+vim.api.nvim_create_autocmd("User", {
+  group = vim.api.nvim_create_augroup("stroiman_init", {}),
+  pattern = "LazyVimStarted",
+  callback = function()
+    print("USER EVENT")
+    -- vim.cmd.colorscheme("catppuccin")
+  end,
+})
 
-vim.cmd.colorscheme("catppuccin")
+require("stroiman")
+-- vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("tokyonight-night")
 
 function P(args)
   print(vim.inspect(args))
