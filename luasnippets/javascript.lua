@@ -2,6 +2,7 @@ return {
   -- General
   s("req", fmt('const {} = require ("{}");', { i(1), rep(1) })),
   s("imp", fmt('import {} from "{}";', { i(1), rep(1) })),
+  s("if", fmta("if (<>) {\n  <>\n}", { i(1), i(0) })),
   -- express
   s("get", fmt('get("{}", (req, res) => {{\n  {}\n}})', { i(1), i(0) })),
   -- Mocha
