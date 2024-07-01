@@ -2,6 +2,7 @@ local setup_nvim_lint = function()
   local lint = require("lint")
   lint.linters_by_ft = {
     javascript = { "eslint_d" },
+    typescript = { "eslint_d" },
   }
 
   vim.g.stroiman_nvim_lint_setup = true
