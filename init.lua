@@ -14,6 +14,8 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = [[^\.git\/$]]
+vim.o.timeout = true
+vim.o.timeoutlen = 500
 
 local reload = function()
   for name, _ in pairs(package.loaded) do
@@ -40,12 +42,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
-vim.keymap.set("n", "<leader>vs", reload)
+vim.keymap.set("n", "<leader>vr", reload, { desc = "Re-source init.lua" })
 vim.keymap.set("n", "<leader>vw", function()
   vim.cmd([[w]])
   reload()
-end)
-vim.keymap.set("n", "<leader>ve", load_init_file)
+end, { desc = "Write current file and source init.lua" })
+vim.keymap.set("n", "<leader>ve", load_init_file, { desc = "Edit init.lua in new tab" })
 vim.keymap.set("n", "<leader>voe", [[:tabnew +tcd\ %:p:h ~/.config/nvim-old/init.lua<cr>]])
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
