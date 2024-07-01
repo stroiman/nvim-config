@@ -47,6 +47,8 @@ local setup_luasnip = function()
     })
   end)
 
+  require("luasnip").filetype_extend("typescript", { "javascript" })
+
   vim.g.stroiman_luasnip_loaded = true
 end
 
