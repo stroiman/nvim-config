@@ -10,10 +10,9 @@ local setup_lspconfig = function()
       "lua_ls",
       "tsserver",
     },
-    automatic_installation = true,
+    automatic_installation = false,
     handlers = {
       function(server_name)
-        print("Configure lsp server " .. server_name)
         require("lspconfig")[server_name].setup({ capabilities })
       end,
       ["tsserver"] = function()
@@ -24,6 +23,7 @@ local setup_lspconfig = function()
       end,
     },
   })
+  require("lspconfig").ocamllsp.setup({ capabilities })
 
   require("mason-tool-installer").setup({
     ensure_installed = {
@@ -94,12 +94,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc })
     end
 
-    -- map('<leader>cr', vim.lsp.buf.rename)
+    map("<leader>cr", vim.lsp.buf.rename)
     map("gd", vim.lsp.buf.definition)
     -- map("gr", vim.lsp.buf.references)
-    map("<leader>cr", function()
-      vim.lsp.buf.code_action({ only = "refactor" })
-    end)
+    -- map("<leader>cr", function()
+    --   vim.lsp.buf.code_action({ only = "refactor" })
+    -- end)
     map("<leader>clc", function()
       vim.lsp.buf.clear(event.client_id, event.buf)
     end)
