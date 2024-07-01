@@ -1,3 +1,4 @@
+require("stroiman.keymaps")
 require("stroiman.bootstrap")
 require("stroiman.plugin-config")
 require("stroiman.windows")

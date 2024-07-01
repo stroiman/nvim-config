@@ -1,0 +1,16 @@
+-- unmap <C-a> & <C-x> - increment/decrement .
+-- Particularly <C-a> interferes with my tmux config (common to use C-a)
+vim.keymap.set("n", "<C-a>", "<nop>")
+vim.keymap.set("n", "<C-x>", "<nop>")
+vim.keymap.set("n", "<leader>vmm", ":messages<cr>")
+vim.keymap.set("n", "<leader>vmc", ":messages clear<cr>")
+vim.keymap.set("n", "-", [[:Ex <bar> :silent! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+-- Open current folder in a split, but I never use it.
+vim.keymap.set("n", "<leader>-h", [[:30Lex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-l", [[:30Lex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-j", [[:40Hex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "<leader>-k", [[:40Hex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
+vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
+vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
+vim.keymap.set("n", "Q", "gqip")
+vim.keymap.set("n", "<leader>dcu", ":!docker compose up -d", { desc = "[D]ocker [C]ompose [U]p" })

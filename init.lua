@@ -36,10 +36,6 @@ end
 
 -- Remove some default keyboard shortcuts that are annoying
 
--- unmap <C-a> & <C-x> - increment/decrement .
--- Particularly <C-a> interferes with my tmux config (common to use C-a)
-vim.keymap.set("n", "<C-a>", "<nop>")
-vim.keymap.set("n", "<C-x>", "<nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
@@ -50,29 +46,12 @@ vim.keymap.set("n", "<leader>vw", function()
   reload()
 end)
 vim.keymap.set("n", "<leader>ve", load_init_file)
-vim.keymap.set("n", "<leader>vmm", ":messages<cr>")
-vim.keymap.set("n", "<leader>vmc", ":messages clear<cr>")
+vim.keymap.set("n", "<leader>voe", [[:tabnew +tcd\ %:p:h ~/.config/nvim-old/init.lua<cr>]])
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
-vim.keymap.set("n", "-", [[:Ex <bar> :silent! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
-vim.keymap.set("n", "<leader>-h", [[:30Lex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
-vim.keymap.set("n", "<leader>-l", [[:30Lex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
-vim.keymap.set("n", "<leader>-j", [[:40Hex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
-vim.keymap.set("n", "<leader>-k", [[:40Hex! <bar> :sil! /<C-R>=expand("%:t")<CR><CR>:noh<CR>]])
 -- Tip from https://medium.com/@kadek/understanding-vims-jump-list-7e1bfc72cdf0
 vim.keymap.set("n", "<expr>j", [[(v:count > 1 ? "m'" . v:count : '') . 'j']])
 vim.keymap.set("n", "<expr>k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']])
-vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
-vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
-
-vim.api.nvim_create_autocmd("User", {
-  group = vim.api.nvim_create_augroup("stroiman_init", {}),
-  pattern = "LazyVimStarted",
-  callback = function()
-    print("USER EVENT")
-    -- vim.cmd.colorscheme("catppuccin")
-  end,
-})
 
 require("stroiman")
 -- vim.cmd.colorscheme("catppuccin")
