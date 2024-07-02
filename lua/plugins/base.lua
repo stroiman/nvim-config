@@ -3,4 +3,5 @@ return {
   "folke/tokyonight.nvim",
   "mbbill/undotree",
   "kyazdani42/nvim-web-devicons",
+  "digitaltoad/vim-pug",
 }
