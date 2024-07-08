@@ -17,7 +17,7 @@ vim.g.netrw_list_hide = [[^\.git\/$]]
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 
-local reload = function()
+local function reload()
   for name, _ in pairs(package.loaded) do
     if name:match("^stroiman") then
       package.loaded[name] = nil
@@ -42,7 +42,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.nohlsearch)
 vim.keymap.set("i", "jk", "<esc>")
-vim.keymap.set("n", "<leader>vr", reload, { desc = "Re-source init.lua" })
+vim.keymap.set("n", "<leader>vs", reload, { desc = "Source init.lua" })
 vim.keymap.set("n", "<leader>vw", function()
   vim.cmd([[w]])
   reload()
