@@ -4,7 +4,10 @@ vim.api.nvim_create_autocmd("FileType", {
   group = win_events,
   pattern = "help",
   callback = function()
-    vim.cmd([[ setlocal signcolumn=no]])
+    vim.cmd([[ 
+      setlocal signcolumn=no
+      setlocal nonu
+    ]])
   end,
 })
 
