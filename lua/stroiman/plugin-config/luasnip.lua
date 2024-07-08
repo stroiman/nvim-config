@@ -48,6 +48,7 @@ local setup_luasnip = function()
   end, { desc = "Edit snippets for current filetype" })
 
   require("luasnip").filetype_extend("typescript", { "javascript" })
+  require("luasnip").filetype_extend("typescriptreact", { "typescript", "javascript", "html" })
 
   vim.g.stroiman_luasnip_loaded = true
 end
