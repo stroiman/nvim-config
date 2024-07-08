@@ -17,4 +17,14 @@ vim.g.projectionist_heuristics = {
       alternate = "src/{}.ts",
     },
   },
+  ["package.json"] = {
+    ["src/*.js"] = {
+      command = "src",
+      alternate = { "test/{}.test.js" },
+    },
+    ["test/*.test.js"] = {
+      command = "test",
+      alternate = "src/{}.js",
+    },
+  },
 }
