@@ -39,13 +39,13 @@ local setup_luasnip = function()
   vim.keymap.set("s", "<C-n>", "<Plug>luasnip-next-choice", {})
   vim.keymap.set("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
   vim.keymap.set("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
-  vim.keymap.set("n", "<leader><leader>se", function()
+  vim.keymap.set("n", "<leader>es", function()
     require("luasnip.loaders").edit_snippet_files({
       edit = function(file)
         vim.cmd.tabnew(file)
       end,
     })
-  end)
+  end, { desc = "Edit snippets for current filetype" })
 
   require("luasnip").filetype_extend("typescript", { "javascript" })
 
