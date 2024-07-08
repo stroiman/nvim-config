@@ -13,4 +13,7 @@ vim.keymap.set("n", "<leader>-k", [[:40Hex! <bar> :sil! /<C-R>=expand("%:t")<CR>
 vim.keymap.set("n", "[q", [[:silent! cprev<CR>]], { silent = true })
 vim.keymap.set("n", "]q", [[:silent! cnext<CR>]], { silent = true })
 vim.keymap.set("n", "Q", "gqip")
-vim.keymap.set("n", "<leader>dcu", ":!docker compose up -d", { desc = "[D]ocker [C]ompose [U]p" })
+vim.keymap.set("n", "<leader>dcu", ":!docker compose up -d<CR>", { desc = "Up" })
+vim.keymap.set("n", "<leader>es", function()
+  require("luasnip.loaders").edit_snippet_files({})
+end)
