@@ -12,6 +12,11 @@ local setup_cmp = function()
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+    formatting = {
+      format = require("lspkind").cmp_format({
+        before = require("tailwind-tools.cmp").lspkind_format,
+      }),
+    },
     mapping = cmp.mapping.preset.insert({
       -- ["<C-k>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
