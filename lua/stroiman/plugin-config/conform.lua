@@ -5,6 +5,8 @@ local setup_conform = function()
       lua = { "stylua" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
+      typescriptreact = { "prettierd" },
+      css = { "prettierd" },
       ocaml = { "ocamlformat" },
     },
     format_on_save = {
@@ -20,7 +22,7 @@ end
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyLoad",
-  group = "stroiman_plugin_load",
+  group = vim.api.nvim_create_augroup("stroiman_plugin_load_conform", {}),
   callback = function(ev)
     if ev.data == "conform" then
       setup_conform()
