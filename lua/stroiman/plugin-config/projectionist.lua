@@ -27,4 +27,24 @@ vim.g.projectionist_heuristics = {
       alternate = "src/{}.js",
     },
   },
+  ["next.config.*"] = {
+    ["app/i18n/locales/en/*.json"] = {
+      command = "en",
+      alternate = {
+        "app/i18n/locales/da/{}.json",
+      },
+    },
+    ["app/i18n/locales/da/*.json"] = {
+      command = "da",
+      alternate = {
+        "app/i18n/locales/de/{}.json",
+      },
+    },
+    ["app/i18n/locales/de/*.json"] = {
+      command = "de",
+      alternate = {
+        "app/i18n/locales/en/{}.json",
+      },
+    },
+  },
 }
