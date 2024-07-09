@@ -1,6 +1,6 @@
 local setup_treesitter = function()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "javascript", "typescript", "ocaml", "go", "ocaml_interface", "pug", "vimdoc" },
+    ensure_installed = { "lua", "javascript", "typescript", "ocaml", "go", "ocaml_interface", "pug", "vimdoc", "tsx" },
     sync_install = false,
     highlight = { enable = true },
     indent = { enable = true },

@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     map("<leader>cr", vim.lsp.buf.rename)
     map("gd", vim.lsp.buf.definition)
-    -- map("gr", vim.lsp.buf.references)
+    map("gr", vim.lsp.buf.references)
     -- map("<leader>cr", function()
     --   vim.lsp.buf.code_action({ only = "refactor" })
     -- end)

@@ -7,6 +7,7 @@ local setup_conform = function()
       typescript = { "prettierd" },
       typescriptreact = { "prettierd" },
       css = { "prettierd" },
+      json = { "prettierd" },
       ocaml = { "ocamlformat" },
     },
     format_on_save = {

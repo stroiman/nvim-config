@@ -37,12 +37,6 @@ vim.g.projectionist_heuristics = {
     ["app/i18n/locales/da/*.json"] = {
       command = "da",
       alternate = {
-        "app/i18n/locales/de/{}.json",
-      },
-    },
-    ["app/i18n/locales/de/*.json"] = {
-      command = "de",
-      alternate = {
         "app/i18n/locales/en/{}.json",
       },
     },
