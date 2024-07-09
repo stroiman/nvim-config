@@ -17,3 +17,7 @@ vim.keymap.set("n", "<leader>dcu", ":!docker compose up -d<CR>", { desc = "Up" }
 vim.keymap.set("n", "<leader>es", function()
   require("luasnip.loaders").edit_snippet_files({})
 end)
+
+-- Navigation
+vim.keymap.set({ "n", "v" }, "j", "gj")
+vim.keymap.set({ "n", "v" }, "k", "gk")
