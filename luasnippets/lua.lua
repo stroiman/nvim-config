@@ -1,4 +1,14 @@
 return {
+  s(
+    "s",
+    fmt('s("{}", {}("{}", {{ {} }})),{}', {
+      i(1),
+      c(2, { t("fmt"), t("fmta") }),
+      i(3),
+      i(4),
+      i(0),
+    })
+  ),
   s("fn", fmta("function (<>)\n  <>\nend", { i(1), i(0) })),
   s("lfn", fmta("local <> = function ()\n  <>\nend", { i(1), i(0) })),
   -- Configuration code for lua
