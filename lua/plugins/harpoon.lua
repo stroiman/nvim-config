@@ -1,5 +1,5 @@
 return {
-  "stroiman/harpoon",
-  branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" }
+  "cosmicboots/harpoon",
+  branch = "fix_dirchange",
+  dependencies = { "nvim-lua/plenary.nvim" },
 }
