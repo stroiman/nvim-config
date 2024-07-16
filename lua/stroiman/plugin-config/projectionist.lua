@@ -41,4 +41,18 @@ vim.g.projectionist_heuristics = {
       },
     },
   },
+  ["go.mod"] = {
+    ["*.go"] = {
+      command = "src",
+      alternate = {
+        "{}_test.go",
+      },
+    },
+    ["*_test.go"] = {
+      command = "test",
+      alternate = {
+        "{}.go",
+      },
+    },
+  },
 }
