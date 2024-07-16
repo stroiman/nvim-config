@@ -1,5 +1,4 @@
 local setup_tailwind_tools = function()
-  print("TAILWIND")
   require("tailwind-tools").setup({
     -- your configuration
   })
