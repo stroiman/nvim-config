@@ -18,13 +18,18 @@ if vim.g.stroiman_telescope_setup then
   setup_telescope()
 end
 
-local function make_builtin(name)
+local function make_builtin(name, opts)
   return function()
-    require("telescope.builtin")[name]()
+    require("telescope.builtin")[name](opts)
   end
 end
 
-vim.keymap.set("n", "<leader>ff", make_builtin("find_files"), { desc = "[S]earch [F]iles" })
+vim.keymap.set(
+  "n",
+  "<leader>ff",
+  make_builtin("find_files", { hidden = true, file_ignore_patterns = { "^.git/" } }),
+  { desc = "[S]earch [F]iles" }
+)
 vim.keymap.set("n", "<leader>fg", make_builtin("live_grep"), { desc = "[S]earch [G]rep" })
 vim.keymap.set("n", "<leader>fb", make_builtin("buffers"), { desc = "[S]earch [B]uffers" })
 vim.keymap.set("n", "<leader>fh", make_builtin("help_tags"), { desc = "[S]earch [H]elp" })
