@@ -49,4 +49,8 @@ return {
     "router",
     fmt('import express from "express"\n\nconst router = express.Router()\n\n{}\n\nexport default router;\n', { i(0) })
   ),
+  -- branching
+  s("if", fmta("if (<>) {\n  <>\n}", { i(1), i(0) })),
+  -- eslint
+  s("ednl", fmt("// eslint-disable-next-line", {})),
 }
