@@ -8,6 +8,11 @@ M.setup = function(config)
   local lspconfig = require("lspconfig")
   lspconfig.tsserver.setup({
     capabilities = config.capabilities,
+    init_options = {
+      preferences = {
+        disableSuggestions = true,
+      },
+    },
     settings = {
       javascript = {
         inlayHints = {
