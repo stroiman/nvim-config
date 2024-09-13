@@ -1,3 +1,5 @@
+local stroiman_lsp_config = vim.api.nvim_create_augroup("stroiman_lsp_config", {})
+
 local setup_lspconfig = function()
   local lspconfig = require("lspconfig")
   local client_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -68,24 +70,11 @@ vim.diagnostic.config({
   underline = { min = vim.diagnostic.severity.ERROR },
 })
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
--- vim.keymap.set("n", "<leader>cr", function()
---   vim.lsp.buf.code_action({ only = "refactor" })
--- end)
--- vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-vim.cmd([[
-augroup stroiman_lsp_config
-  au!
-  " autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-  " autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-  " autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  "autocmd BufWritePre *.js,*.ts lua vim.lsp.buf.format()
-  "autocmd BufWritePre *.lua lua vim.lsp.buf.format()
-augroup end
-]])
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = "stroiman_lsp_config",
+  group = stroiman_lsp_config,
   callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
     local map = function(keys, func, description)
       local desc = nil
       if description ~= nil then
@@ -103,6 +92,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>clc", function()
       vim.lsp.buf.clear(event.client_id, event.buf)
     end)
+    --
+    if client.supports_method("textDocument/documentHighlight") then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = stroiman_lsp_config,
+        buffer = event.buf,
+        callback = function()
+          vim.lsp.buf.document_highlight()
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+        group = stroiman_lsp_config,
+        buffer = event.buf,
+        callback = function()
+          vim.lsp.buf.clear_references()
+        end,
+      })
+    end
     -- map('<leader>cld', function()
     --   print("Lenslens")
     --   local lenses = vim.lsp.codelens.get(event.buf)
@@ -122,7 +128,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
     --   buffer = event.buf,
-    --   group = "stroiman_lsp_config",
+    --   group = stroiman_lsp_config,
     --   callback = function()
     --     vim.lsp.codelens.refresh({ bufnr = event.buf })
     --   end
