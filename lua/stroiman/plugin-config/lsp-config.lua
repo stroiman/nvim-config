@@ -75,9 +75,9 @@ vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 vim.cmd([[
 augroup stroiman_lsp_config
   au!
-  autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-  autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  " autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+  " autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+  " autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
   "autocmd BufWritePre *.js,*.ts lua vim.lsp.buf.format()
   "autocmd BufWritePre *.lua lua vim.lsp.buf.format()
 augroup end
