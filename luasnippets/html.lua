@@ -22,7 +22,8 @@ return {
   ),
   s("id", fmt('id="{}"', { i(1) })),
   s("cn", fmt('className="{}"', { i(1) })),
-  s("p", fmt("<p{}>\n{}\n</p>", { i(1), i(0) })),
+  s("p", fmt("<p {}>\n{}\n</p>", { i(1), i(0) })),
   s("br", t("<br />")),
   -- s("main", fmt("<m>{}</h1>\n{}", { i(1), i(0) })),
+  s("css", fmt('<link rel="stylesheet" href="{}">', { i(0) })),
 }

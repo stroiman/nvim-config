@@ -1,7 +1,24 @@
 return {
   -- General
   s("fa", fmt("({}) => {{{}}}", { i(1), i(0) })),
-  s("req", fmt('const {} = require ("{}");', { i(1), rep(1) })),
+  -- s("req", fmt('const {} = require ("{}");', { i(1), rep(1) })),
+  s("van", fmt("export const {} = van.tags.{};", { i(1), rep(1) })),
+  s(
+    "req",
+    fmt('const {} = require("{}");', {
+      c(2, {
+        d(1, function(arg)
+          local parts = vim.split(arg[1][1], "/")
+          return sn({ i(1, parts[#parts]) })
+        end, { 1 }),
+        f(function(arg)
+          return "{ " .. arg[1][1] .. " }"
+        end, { 1 }),
+        i(1),
+      }),
+      i(1),
+    })
+  ),
   s(
     "imp",
     fmt('import {} from "{}";', {
@@ -21,6 +38,26 @@ return {
   -- express
   s("get", fmt('get("{}", (req, res) => {{\n  {}\n}})', { i(1), i(0) })),
   s(
+    "post",
+    fmt('post("{}", {}({}) => {{\n  {}\n}}{})', {
+      i(1),
+      c(2, {
+        t(""),
+        t("asyncHandler("),
+      }),
+      c(3, { t("req, res"), t("req, res, next") }),
+      i(0),
+      f(function(args)
+        if args[1][1] == "" then
+          return ""
+        else
+          return ")"
+        end
+      end, { 2 }),
+    })
+  ),
+  s("del", fmt('delete("{}", (req, res) => {{\n  {}\n}})', { i(1), i(0) })),
+  s(
     "use",
     fmt("use(({}) => {{\n  {}\n}})", { c(1, {
       t("req, res, next"),
@@ -28,8 +65,8 @@ return {
     }), i(0) })
   ),
   -- Mocha
-  s("des", fmt('describe("{}", () => {{\n  {}\n}})', { i(1), i(2) })),
-  s("ctx", fmt('context("{}", () => {{\n{}\n}})', { i(1), i(2) })),
+  s("des", fmt('describe("{}", () => {{\n  {}\n}})', { i(1), i(0) })),
+  s("ctx", fmt('context("{}", () => {{\n{}\n}})', { i(1), i(0) })),
   s(
     "it",
     fmt('it("{}", {} => {{\n  {}\n}})', { i(1), c(2, {
@@ -47,7 +84,16 @@ return {
   -- express
   s(
     "router",
-    fmt('import express from "express"\n\nconst router = express.Router()\n\n{}\n\nexport default router;\n', { i(0) })
+    c(1, {
+      fmt(
+        'import express from "express"\n\nconst router = express.Router()\n\n{}\n\nexport default router;\n',
+        { i(1) }
+      ),
+      fmt(
+        'const express = require("express")\n\nconst router = express.Router()\n\n{}\n\nmodule.exports = router;\n',
+        { i(1) }
+      ),
+    })
   ),
   -- branching
   s("if", fmta("if (<>) {\n  <>\n}", { i(1), i(0) })),
