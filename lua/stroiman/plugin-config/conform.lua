@@ -9,7 +9,7 @@ local setup_conform = function()
       css = { "prettierd" },
       json = { "prettierd" },
       ocaml = { "ocamlformat" },
-      go = { "gofmt" },
+      go = { "golines", "gofmt" },
     },
     format_on_save = {
       lsp_fallback = true,
