@@ -5,6 +5,10 @@ vim.keymap.set("n", "<leader>gg", function()
   vim.cmd("Git")
 end)
 
+vim.keymap.set("n", "<leader>ga", function()
+  vim.cmd("Git add .")
+end)
+
 local group = vim.api.nvim_create_augroup("stroiman_fugitive", {})
 
 vim.api.nvim_create_autocmd("FileType", {
