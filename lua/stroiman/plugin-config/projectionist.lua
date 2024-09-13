@@ -10,10 +10,14 @@ vim.g.projectionist_heuristics = {
   ["package.json&tsconfig.json"] = {
     ["src/*.ts"] = {
       command = "src",
-      alternate = { "test/{}.test.ts" },
+      alternate = { "test/{}.test.ts", "src/{}.module.css" },
     },
     ["test/*.test.ts"] = {
       command = "test",
+      alternate = "src/{}.ts",
+    },
+    ["src/*.module.css"] = {
+      command = "css",
       alternate = "src/{}.ts",
     },
   },
