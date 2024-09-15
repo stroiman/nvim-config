@@ -5,6 +5,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
+  "comment": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "conform": { "branch": "master", "commit": "acc7d93f4a080fec587a99fcb36cffa29adc4bad" },
   "evergarden": { "branch": "mega", "commit": "7e031b62f13d8b13eed5a2906d6bf4ea6d44759c" },
   "gitsigns": { "branch": "main", "commit": "f4928ba14eb6c667786ac7d69927f6aee6719f1e" },
