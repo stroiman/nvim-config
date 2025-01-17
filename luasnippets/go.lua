@@ -1,6 +1,5 @@
 return {
   s("eno", fmt("Expect(err).ToNot(HaveOccurred()){}", { i(0) })),
-  -- s("exp", fmt("Expect({}).{}({})", { i(1), c(2, { t("To"), t("ToNot") }), i(0) })),
   postfix({
     trig = ".exp",
     -- Probably need to be improved
@@ -18,6 +17,7 @@ return {
       -- return fmt("Expect({}).{}({})", { t(parent.snippet.env.POSTFIX_MATCH), c(1, { t("To"), t("ToNot") }), i(0) })
     end),
   }),
+  s("exp", fmt("Expect({}).{}({})", { i(1), c(2, { t("To"), t("ToNot") }), i(0) })),
   s("desc", fmta('Describe("<>", func() {\n  <>\n})', { i(1), i(0) })),
   s("it", fmta('It("<>", func() {\n  <>\n})', { i(1), i(0) })),
   s("bef", fmta("<>(func() {\n  <>\n})", { c(1, { t("BeforeEach"), t("BeforeAll") }), i(0) })),
@@ -35,4 +35,10 @@ return {
       i(0),
     })
   ),
+  s("v8cb", fmta("func(info *v8.FunctionCallbackInfo) (*v8.Value, error) {\n<>\n}", i(0))),
+  s(
+    "v8ft",
+    fmta("v8.NewFunctionTemplateWithError(iso, func(info *v8.FunctionCallbackInfo) (*v8.Value, error) {\n<>\n})", i(0))
+  ),
+  s("httphandler", fmta("func(res http.ResponseWriter, req *http.Request) {\n\t<>\n}", i(0))),
 }
