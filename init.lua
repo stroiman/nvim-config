@@ -15,6 +15,7 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = [[^\.git\/$]]
+vim.g.netrw_sort_sequence = "\\/$,*"
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 
