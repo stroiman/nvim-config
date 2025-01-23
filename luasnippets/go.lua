@@ -1,3 +1,69 @@
+local go_struct_result = function()
+  local current_line = vim.api.nvim_win_get_cursor(0)[1]
+  P({ "Current line", current_line })
+  local node = vim.treesitter.get_node()
+  if node == nil then
+    return nil
+  end
+  -- print("Found current node" .. node:type())
+  while node ~= nil do
+    if node:type() == "source_file" then
+      break
+    end
+    local parent = node:parent()
+    node = parent
+  end
+  if node == nil then
+    return nil
+  end
+  if node:child_count() == 0 then
+    return nil
+  end
+  node = node:child(0)
+  local last_found = nil
+
+  while node ~= nil do
+    -- print("Iterate node " .. node:type())
+    if node:type() == "type_declaration" then
+      for c in node:iter_children() do
+        -- print(" - Child " .. c:type())
+        if c:type() == "type_spec" then
+          for a in c:iter_children() do
+            if a:type() == "type_identifier" then
+              last_found = a
+            end
+          end
+        end
+      end
+    end
+    node = node:next_sibling()
+    local start = node:start()
+    P(start)
+    if start > current_line then
+      break
+    end
+  end
+  return last_found
+end
+
+local go_prev_struct = function(_, info)
+  P(info.index)
+  local node = go_struct_result()
+  if node == nil then
+    return t("")
+  end
+  local type = vim.treesitter.get_node_text(node, 0)
+  local idx = string.find(type, "%u%l*$")
+  local rec = ""
+  if idx ~= nil then
+    rec = string.lower(string.sub(type, idx, idx))
+  else
+    rec = string.lower(string.sub(type, 1, 1))
+  end
+  P({ type = type, idx = idx, rec = rec })
+  return sn(nil, fmta("<> <>", { i(1, rec), c(2, { t(type), t("*" .. type) }) }))
+end
+
 return {
   s("eno", fmt("Expect(err).ToNot(HaveOccurred()){}", { i(0) })),
   postfix({
@@ -41,4 +107,23 @@ return {
     fmta("v8.NewFunctionTemplateWithError(iso, func(info *v8.FunctionCallbackInfo) (*v8.Value, error) {\n<>\n})", i(0))
   ),
   s("httphandler", fmta("func(res http.ResponseWriter, req *http.Request) {\n\t<>\n}", i(0))),
+  s("test", fmta("func Test<> (t *testing.T) {\n\t<>\n}", { i(1), i(2) })),
+  s(
+    "method",
+    fmta(
+      [[
+func (<rec>) <name> (<args>) <ret_val> {
+  <finish>
+}
+]],
+      {
+        rec = d(1, go_prev_struct),
+        name = i(2),
+        args = i(3),
+        ret_val = i(4),
+        finish = i(0),
+      }
+    )
+  ),
+  s("deferc", fmta("DeferCleanup(func() { <> })", i(0))),
 }
