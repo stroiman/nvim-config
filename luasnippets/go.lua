@@ -156,4 +156,6 @@ func (<rec>) <name>() {
     )
   ),
   s("deferc", fmta("DeferCleanup(func() { <> })", i(0))),
+  s("sep", fmta("/* -------- <> -------- */", i(0))),
+  s("str", fmta("type <> struct {\n\t<>\n}", { i(1), i(0) })),
 }
