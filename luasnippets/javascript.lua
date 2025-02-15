@@ -1,24 +1,28 @@
 return {
   -- General
   s("fa", fmt("({}) => {{{}}}", { i(1), i(0) })),
-  -- s("req", fmt('const {} = require ("{}");', { i(1), rep(1) })),
+  s("req", fmt('const {} = require ("{}");', { rep(1), i(1) })),
   s("van", fmt("export const {} = van.tags.{};", { i(1), rep(1) })),
-  s(
-    "req",
-    fmt('const {} = require("{}");', {
-      c(2, {
-        d(1, function(arg)
-          local parts = vim.split(arg[1][1], "/")
-          return sn({ i(1, parts[#parts]) })
-        end, { 1 }),
-        f(function(arg)
-          return "{ " .. arg[1][1] .. " }"
-        end, { 1 }),
-        i(1),
-      }),
-      i(1),
-    })
-  ),
+  -- s(
+  --   "req",
+  --   fmt('const {} = require("{}");', {
+  --     c(2, {
+  --       d(1, function(arg)
+  --         local parts = vim.split(arg[1][1], "/")
+  --         if #parts == 0 then
+  --           return sn({ i(1, arg[1][1] })
+  --         else
+  --           return sn({ i(1, parts[#parts]) })
+  --         end
+  --       end, { 1 }),
+  --       f(function(arg)
+  --         return "{ " .. arg[1][1] .. " }"
+  --       end, { 1 }),
+  --       i(1),
+  --     }),
+  --     i(1),
+  --   })
+  -- ),
   s(
     "imp",
     fmt('import {} from "{}";', {
@@ -99,4 +103,13 @@ return {
   s("if", fmta("if (<>) {\n  <>\n}", { i(1), i(0) })),
   -- eslint
   s("ednl", fmt("// eslint-disable-next-line", {})),
+  s("modexp", fmt("module.exports = {{\n  {}\n}}", i(0))),
+  s("log", fmta("console.log(<>);", i(0))),
+  s(
+    "fn",
+    fmt("{}({}) => {{\n  {}\n}}", { c(1, {
+      t(""),
+      t("async"),
+    }), i(2), i(0) })
+  ),
 }

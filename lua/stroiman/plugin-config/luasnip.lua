@@ -4,7 +4,7 @@ local setup_luasnip = function()
 
   ls.config.set_config({
     history = true,
-    updateevents = "TextChanged,TextChangedI",
+    updateevents = "InsertLeave,TextChanged,TextChangedI",
     enable_autosnippets = true,
     ext_opts = {
       [types.choiceNode] = {
