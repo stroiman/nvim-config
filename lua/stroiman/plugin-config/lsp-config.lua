@@ -99,22 +99,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.clear(event.client_id, event.buf)
     end)
     --
-    if client.supports_method("textDocument/documentHighlight") then
-      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        group = stroiman_lsp_config,
-        buffer = event.buf,
-        callback = function()
-          vim.lsp.buf.document_highlight()
-        end,
-      })
-      vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-        group = stroiman_lsp_config,
-        buffer = event.buf,
-        callback = function()
-          vim.lsp.buf.clear_references()
-        end,
-      })
-    end
+    -- if client.supports_method("textDocument/documentHighlight") then
+    --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+    --     group = stroiman_lsp_config,
+    --     buffer = event.buf,
+    --     callback = function()
+    --       vim.lsp.buf.document_highlight()
+    --     end,
+    --   })
+    --   vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+    --     group = stroiman_lsp_config,
+    --     buffer = event.buf,
+    --     callback = function()
+    --       vim.lsp.buf.clear_references()
+    --     end,
+    --   })
+    -- end
     -- map('<leader>cld', function()
     --   print("Lenslens")
     --   local lenses = vim.lsp.codelens.get(event.buf)
