@@ -125,5 +125,35 @@ func (<rec>) <name> (<args>) <ret_val> {
       }
     )
   ),
+  s(
+    "tsetup",
+    fmta(
+      [[
+func (<rec>) <name>() {
+  <finish>
+}
+]],
+      {
+        rec = d(1, go_prev_struct),
+        name = c(2, { t("SetupTest"), t("BeforeTest") }),
+        finish = i(0),
+      }
+    )
+  ),
+  s(
+    "taft",
+    fmta(
+      [[
+func (<rec>) <name>() {
+  <finish>
+}
+]],
+      {
+        rec = d(1, go_prev_struct),
+        name = c(2, { t("TeardownTest"), t("AfterTest") }),
+        finish = i(0),
+      }
+    )
+  ),
   s("deferc", fmta("DeferCleanup(func() { <> })", i(0))),
 }
