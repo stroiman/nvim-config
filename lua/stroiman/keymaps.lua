@@ -21,3 +21,7 @@ end)
 -- Navigation
 vim.keymap.set({ "n", "v" }, "j", "gj")
 vim.keymap.set({ "n", "v" }, "k", "gk")
+
+-- Obsidian
+
+vim.keymap.set("n", "<leader>ww", ":ObsidianToday<cr>")
