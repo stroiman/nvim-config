@@ -106,7 +106,7 @@ return {
     "v8ft",
     fmta("v8.NewFunctionTemplateWithError(iso, func(info *v8.FunctionCallbackInfo) (*v8.Value, error) {\n<>\n})", i(0))
   ),
-  s("httphandler", fmta("func(res http.ResponseWriter, req *http.Request) {\n\t<>\n}", i(0))),
+  s("handler", fmta("func(w http.ResponseWriter, r *http.Request) {\n\t<>\n}", i(0))),
   s("test", fmta("func Test<> (t *testing.T) {\n\t<>\n}", { i(1), i(2) })),
   s(
     "method",
