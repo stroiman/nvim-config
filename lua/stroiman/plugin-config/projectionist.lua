@@ -56,6 +56,20 @@ vim.g.projectionist_heuristics = {
       command = "test",
       alternate = {
         "{}.go",
+        "{}.h",
+      },
+    },
+    ["*.h"] = {
+      command = "h",
+      alternate = {
+        "{}.cc",
+      },
+    },
+    ["*.cc"] = {
+      command = "cc",
+      alternate = {
+        "{}.h",
+        "{}.go",
       },
     },
   },
