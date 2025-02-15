@@ -22,7 +22,7 @@ local setup_gruvbox = function()
     -- palette_overrides = {},
     -- overrides = {},
     -- dim_inactive = false,
-    transparent_mode = true,
+    transparent_mode = false,
   })
   -- vim.cmd("colorscheme gruvbox")
 

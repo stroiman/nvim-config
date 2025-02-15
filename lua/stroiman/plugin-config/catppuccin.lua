@@ -1,7 +1,7 @@
 local setup_catppuccin = function()
   local catppuccin = require("catppuccin")
   catppuccin.setup({
-    transparent_background = true,
+    transparent_background = false,
     custom_highlights = function(colors)
       return {
         LineNr = { fg = "#707070" },
