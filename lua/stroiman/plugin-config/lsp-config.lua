@@ -10,18 +10,24 @@ local setup_lspconfig = function()
   require("mason-lspconfig").setup({
     ensure_installed = {
       "lua_ls",
-      "tsserver",
+      "ts_ls",
     },
     automatic_installation = false,
     handlers = {
       function(server_name)
         require("lspconfig")[server_name].setup({ capabilities })
       end,
-      ["tsserver"] = function()
+      ["ts_ls"] = function()
         require("stroiman.lsp-config.tsserver").setup({ capabilities })
       end,
       ["lua_ls"] = function()
         require("stroiman.lsp-config.lua_ls").setup({ capabilities })
+      end,
+      ["htmx"] = function()
+        lspconfig.htmx.setup({
+          capabilities,
+          -- filetypes = { "html", "pug" },
+        })
       end,
     },
   })
