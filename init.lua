@@ -55,8 +55,8 @@ vim.keymap.set("n", "<leader>voe", [[:tabnew +tcd\ %:p:h ~/.config/nvim-old/init
 vim.keymap.set("n", "<C-s>", ":w<cr>")
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 -- Tip from https://medium.com/@kadek/understanding-vims-jump-list-7e1bfc72cdf0
-vim.keymap.set("n", "<expr>j", [[(v:count > 1 ? "m'" . v:count : '') . 'j']])
-vim.keymap.set("n", "<expr>k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']])
+vim.keymap.set({ "n", "v" }, "j", [[(v:count > 1 ? "m'" . v:count . 'j' : 'gj')]], { expr = true })
+vim.keymap.set({ "n", "v" }, "k", [[(v:count > 1 ? "m'" . v:count . 'k' : 'gk')]], { expr = true })
 
 require("stroiman")
 -- vim.cmd.colorscheme("catppuccin")

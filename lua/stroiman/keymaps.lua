@@ -18,9 +18,9 @@ vim.keymap.set("n", "<leader>es", function()
   require("luasnip.loaders").edit_snippet_files({})
 end)
 
--- Navigation
-vim.keymap.set({ "n", "v" }, "j", "gj")
-vim.keymap.set({ "n", "v" }, "k", "gk")
+-- Up/down behaviour
+vim.keymap.set({ "n", "v" }, "j", [[(v:count > 1 ? "m'" . v:count . 'j' : 'gj')]], { expr = true })
+vim.keymap.set({ "n", "v" }, "k", [[(v:count > 1 ? "m'" . v:count . 'k' : 'gk')]], { expr = true })
 
 -- Obsidian
 
