@@ -126,7 +126,7 @@ func (<rec>) <name> (<args>) <ret_val> {
     )
   ),
   s(
-    "tsetup",
+    "ssetup",
     fmta(
       [[
 func (<rec>) <name>() {
@@ -141,7 +141,7 @@ func (<rec>) <name>() {
     )
   ),
   s(
-    "taft",
+    "saft",
     fmta(
       [[
 func (<rec>) <name>() {
@@ -158,4 +158,12 @@ func (<rec>) <name>() {
   s("deferc", fmta("DeferCleanup(func() { <> })", i(0))),
   s("sep", fmta("/* -------- <> -------- */", i(0))),
   s("str", fmta("type <> struct {\n\t<>\n}", { i(1), i(0) })),
+  s("srun", fmta("suite.Run(t, new(<>))", i(0))),
+  s(
+    "suite",
+    fmta(
+      "type <>TestSuite struct {\n\tsuite.Suite\n\t<>\n}\n\nfunc Test<>(t *testing.T) {\n\tsuite.Run(t, new(<>TestSuite))\n}",
+      { i(1), i(0), rep(1), rep(1) }
+    )
+  ),
 }
