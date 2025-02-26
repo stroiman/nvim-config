@@ -46,21 +46,30 @@ local go_struct_result = function()
   return last_found
 end
 
-local go_prev_struct = function(_, info)
-  P(info.index)
+local go_prev_struct_name = function()
   local node = go_struct_result()
   if node == nil then
+    return nil
+  end
+  return vim.treesitter.get_node_text(node, 0)
+end
+
+local go_receiver_name = function(type)
+  local idx = string.find(type, "%u%l*$")
+  if idx ~= nil then
+    return string.lower(string.sub(type, idx, idx))
+  else
+    return string.lower(string.sub(type, 1, 1))
+  end
+end
+
+local go_prev_struct = function(_, info)
+  P(info.index)
+  local type = go_prev_struct_name()
+  if type == nil then
     return t("")
   end
-  local type = vim.treesitter.get_node_text(node, 0)
-  local idx = string.find(type, "%u%l*$")
-  local rec = ""
-  if idx ~= nil then
-    rec = string.lower(string.sub(type, idx, idx))
-  else
-    rec = string.lower(string.sub(type, 1, 1))
-  end
-  P({ type = type, idx = idx, rec = rec })
+  local rec = go_receiver_name(type)
   return sn(nil, fmta("<> <>", { i(1, rec), c(2, { t(type), t("*" .. type) }) }))
 end
 
@@ -80,7 +89,6 @@ return {
           i(2),
         })
       )
-      -- return fmt("Expect({}).{}({})", { t(parent.snippet.env.POSTFIX_MATCH), c(1, { t("To"), t("ToNot") }), i(0) })
     end),
   }),
   s("exp", fmt("Expect({}).{}({})", { i(1), c(2, { t("To"), t("ToNot") }), i(0) })),
@@ -123,6 +131,19 @@ func (<rec>) <name> (<args>) <ret_val> {
         ret_val = i(4),
         finish = i(0),
       }
+    )
+  ),
+  s(
+    "stest",
+    fmta(
+      [[
+func (s <>) Test<> ()  {
+  <>
+}
+]],
+      { f(function()
+        return "*" .. go_prev_struct_name()
+      end), i(1), i(0) }
     )
   ),
   s(
