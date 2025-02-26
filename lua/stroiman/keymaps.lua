@@ -22,6 +22,10 @@ end)
 vim.keymap.set({ "n", "v" }, "j", [[(v:count > 1 ? "m'" . v:count . 'j' : 'gj')]], { expr = true })
 vim.keymap.set({ "n", "v" }, "k", [[(v:count > 1 ? "m'" . v:count . 'k' : 'gk')]], { expr = true })
 
+-- Don't replace yank buffer when pasting in visual mode
+vim.keymap.set("v", "p", "P")
+vim.keymap.set("v", "P", "p")
+
 -- Obsidian
 
 vim.keymap.set("n", "<leader>ww", ":ObsidianToday<cr>")
