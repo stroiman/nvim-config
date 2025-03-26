@@ -150,14 +150,16 @@ func (s <>) Test<> ()  {
     "ssetup",
     fmta(
       [[
-func (<rec>) <name>() {
-  <finish>
+func (s <>) <>() {
+  <>
 }
 ]],
       {
-        rec = d(1, go_prev_struct),
-        name = c(2, { t("SetupTest"), t("BeforeTest") }),
-        finish = i(0),
+        f(function()
+          return "*" .. go_prev_struct_name()
+        end),
+        c(1, { t("SetupTest"), t("BeforeTest"), t("SetupSuite") }),
+        i(0),
       }
     )
   ),
@@ -165,13 +167,15 @@ func (<rec>) <name>() {
     "saft",
     fmta(
       [[
-func (<rec>) <name>() {
+func (s <rec>) <name>() {
   <finish>
 }
 ]],
       {
-        rec = d(1, go_prev_struct),
-        name = c(2, { t("TeardownTest"), t("AfterTest") }),
+        rec = f(function()
+          return "*" .. go_prev_struct_name()
+        end),
+        name = c(1, { t("TearDownTest"), t("AfterTest"), t("TearDownSuite") }),
         finish = i(0),
       }
     )
