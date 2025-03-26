@@ -66,3 +66,10 @@ function P(args)
   print(vim.inspect(args))
   return args
 end
+
+function FixOutlierScript()
+  vim.cmd([[:%s/\n\n\n/\r\r\r\r/g
+:%s/\n\n/\r/g]])
+end
+
+vim.keymap.set("n", "<leader>xx", FixOutlierScript)
