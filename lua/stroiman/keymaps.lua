@@ -26,6 +26,11 @@ vim.keymap.set({ "n", "v" }, "k", [[(v:count > 1 ? "m'" . v:count . 'k' : 'gk')]
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
 
+vim.keymap.set("n", "<leader>wj", [[5<C-w>-]])
+vim.keymap.set("n", "<leader>wk", [[5<C-w>+]])
+vim.keymap.set("n", "<leader>wh", [[5<C-w><]])
+vim.keymap.set("n", "<leader>wl", [[5<C-w>>]])
+
 -- Obsidian
 
 vim.keymap.set("n", "<leader>ww", ":ObsidianToday<cr>")
