@@ -4,4 +4,7 @@ return {
   "mbbill/undotree",
   "kyazdani42/nvim-web-devicons",
   "digitaltoad/vim-pug",
+  -- {
+  --   dir = "~/src/nvim-plugins/gotest.nvim",
+  -- },
 }
