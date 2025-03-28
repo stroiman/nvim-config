@@ -1,16 +1,18 @@
-return {
-  "nvim-neotest/neotest",
-  dependencies = {
-    "nvim-neotest/nvim-nio",
-    "nvim-lua/plenary.nvim",
-    "antoinemadec/FixCursorHold.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    {
-      "fredrikaverpil/neotest-golang",
-      version = "*",
-      -- dependencies = {
-      --   "andythigpen/nvim-coverage", -- Added dependency
-      -- },
-    },
-  },
-}
+return {}
+-- return {
+--   "nvim-neotest/neotest",
+--   dependencies = {
+--     "nvim-neotest/nvim-nio",
+--     "nvim-lua/plenary.nvim",
+--     "antoinemadec/FixCursorHold.nvim",
+--     "nvim-treesitter/nvim-treesitter",
+--     {
+--       -- "nvim-neotest/neotest-go",
+--       "fredrikaverpil/neotest-golang",
+--       version = "*",
+--       -- dependencies = {
+--       --   "andythigpen/nvim-coverage", -- Added dependency
+--       -- },
+--     },
+--   },
+-- }
