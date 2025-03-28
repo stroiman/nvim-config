@@ -38,6 +38,10 @@ local load_init_file = function()
   end
 end
 
+local open_custom_plugin = function()
+  vim.cmd([[tabnew +tcd\ ~/src/nvim-plugins ~/src/nvim-plugins]])
+end
+
 -- Remove some default keyboard shortcuts that are annoying
 
 vim.g.mapleader = " "
@@ -50,6 +54,7 @@ vim.keymap.set("n", "<leader>vw", function()
   reload()
 end, { desc = "Write current file and source init.lua" })
 vim.keymap.set("n", "<leader>ve", load_init_file, { desc = "Edit init.lua in new tab" })
+vim.keymap.set("n", "<leader>vc", open_custom_plugin, { desc = "Open custom plugin folder in new tab" })
 vim.keymap.set("n", "<leader>vx", [[:w<cr>:so %<cr>]], { desc = "Save and execute current file" })
 vim.keymap.set("n", "<leader>vwe", [[:vsplit +lcd\ %:p:h $MYVIMRC<cr>]])
 vim.keymap.set("n", "<leader>voe", [[:tabnew +tcd\ %:p:h ~/.config/nvim-old/init.lua<cr>]])
