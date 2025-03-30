@@ -21,7 +21,7 @@ vim.o.timeoutlen = 500
 
 local function reload()
   for name, _ in pairs(package.loaded) do
-    if name:match("^stroiman") then
+    if name:match("^stroiman") or name:match("^gotest") then
       package.loaded[name] = nil
     end
   end
