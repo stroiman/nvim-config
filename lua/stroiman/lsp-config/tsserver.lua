@@ -6,7 +6,7 @@ local M = {}
 
 M.setup = function(config)
   local lspconfig = require("lspconfig")
-  lspconfig.ts_ls.setup({
+  lspconfig.tsserver.setup({
     capabilities = config.capabilities,
     init_options = {
       preferences = {
