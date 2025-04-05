@@ -23,6 +23,9 @@ local setup_lspconfig = function()
       ["lua_ls"] = function()
         require("stroiman.lsp-config.lua_ls").setup({ capabilities })
       end,
+      ["gopls"] = function()
+        require("stroiman.lsp-config.gopls").setup({ capabilities })
+      end,
       ["htmx"] = function()
         lspconfig.htmx.setup({
           capabilities,
@@ -64,6 +67,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.diagnostic.config({
   virtual_text = false,
+  virtual_lines = false,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "", -- '🛑', -- '',
@@ -80,7 +84,12 @@ vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 vim.api.nvim_create_autocmd("LspAttach", {
   group = stroiman_lsp_config,
   callback = function(event)
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    local client_id = event.data.client_id
+    local client = vim.lsp.get_client_by_id(client_id)
+    ---@diagnostic disable-next-line: need-check-nil
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = false })
+    end
     local map = function(keys, func, description)
       local desc = nil
       if description ~= nil then
@@ -92,11 +101,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>cr", vim.lsp.buf.rename)
     map("gd", vim.lsp.buf.definition)
     map("gr", vim.lsp.buf.references)
+    vim.keymap.set("i", "<C-h>", function()
+      vim.lsp.buf.signature_help({ border = "rounded" })
+    end)
     -- map("<leader>cr", function()
     --   vim.lsp.buf.code_action({ only = "refactor" })
     -- end)
     map("<leader>clc", function()
-      vim.lsp.buf.clear(event.client_id, event.buf)
+      vim.lsp.buf.clear(client_id, event.buf)
     end)
     --
     -- if client.supports_method("textDocument/documentHighlight") then
@@ -144,7 +156,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local border = "rounded"
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
 if vim.g.stroiman_lsp_loaded then
   setup_lspconfig()
