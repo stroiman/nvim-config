@@ -20,8 +20,13 @@ vim.o.timeout = true
 vim.o.timeoutlen = 500
 
 local function reload()
-  for name, _ in pairs(package.loaded) do
+  for name, pkg in pairs(package.loaded) do
     if name:match("^stroiman") or name:match("^gotest") then
+      if type(pkg) == "table" then
+        if pkg.unload then
+          pkg.unload()
+        end
+      end
       package.loaded[name] = nil
     end
   end
