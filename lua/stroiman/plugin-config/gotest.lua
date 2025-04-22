@@ -3,4 +3,8 @@ if not ok then
   return
 end
 
-gotest.setup()
+gotest.setup({
+  output_window = {
+    show = "auto",
+  },
+})
