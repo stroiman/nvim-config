@@ -1,15 +1,15 @@
 local setup_nordic = function()
-  require("nordic").load()
-  require("nordic").setup({
-    bold_keywords = true,
-    italic_comments = true,
-    -- FooBar
-    telescope = {
-      -- Available styles: `classic`, `flat`.
-      style = "classic",
-    },
-  })
-
+  -- require("nordic").load()
+  -- require("nordic").setup({
+  --   bold_keywords = true,
+  --   italic_comments = true,
+  --   -- FooBar
+  --   telescope = {
+  --     -- Available styles: `classic`, `flat`.
+  --     style = "classic",
+  --   },
+  -- })
+  --
   vim.g.stroiman_nordic_setup = true
 end
 
