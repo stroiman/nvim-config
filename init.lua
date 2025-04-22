@@ -69,14 +69,14 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 vim.keymap.set({ "n", "v" }, "j", [[(v:count > 1 ? "m'" . v:count . 'j' : 'gj')]], { expr = true })
 vim.keymap.set({ "n", "v" }, "k", [[(v:count > 1 ? "m'" . v:count . 'k' : 'gk')]], { expr = true })
 
-require("stroiman")
--- vim.cmd.colorscheme("catppuccin")
--- vim.cmd.colorscheme("tokyonight-night")
-
 function P(args)
   print(vim.inspect(args))
   return args
 end
+
+require("stroiman")
+-- vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("tokyonight-night")
 
 function FixOutlierScript()
   vim.cmd([[:%s/\n\n\n/\r\r\r\r/g
