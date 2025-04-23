@@ -1,3 +1,3 @@
 setlocal noet
-set ts=4
-set sw=4
+setlocal ts=4
+setlocal sw=4
