@@ -184,7 +184,9 @@ func (s <rec>) <name>() {
   s("deferc", fmta("DeferCleanup(func() { <> })", i(0))),
   s("sep", fmta("/* -------- <> -------- */", i(0))),
   s("str", fmta("type <> struct {\n\t<>\n}", { i(1), i(0) })),
+  s("intf", fmta("type <> interface {\n\t<>\n}", { i(1), i(0) })),
   s("srun", fmta("suite.Run(t, new(<>))", i(0))),
+  s("wr", fmta("w http.ResponseWriter, r *http.Request", {})),
   s(
     "suite",
     fmta(
