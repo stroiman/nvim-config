@@ -1,5 +1,7 @@
+local gotest_loaded, gotest = pcall(require, "gotest")
+
 local setup_lualine = function()
-  require("lualine").setup({
+  local opts = {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "diagnostics" },
@@ -9,7 +11,17 @@ local setup_lualine = function()
       lualine_z = { "location" },
     },
     extensions = { "fugitive", "quickfix" },
-  })
+  }
+  if gotest_loaded then
+    table.insert(opts.sections.lualine_a, function()
+      local res = gotest.status()
+      if res then
+        return res
+      end
+      return "..."
+    end)
+  end
+  require("lualine").setup(opts)
 
   vim.g.stroiman_lualine_setup = true
 end
