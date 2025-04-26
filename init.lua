@@ -1,23 +1,25 @@
 -- Affects CursorHold (highlight current symbol)
-vim.opt.updatetime = 1000
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.textwidth = 80
-vim.opt.swapfile = false
-vim.opt.splitright = true
-vim.opt.splitbelow = false
-vim.opt.signcolumn = "yes"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.relativenumber = true
-vim.opt.number = true
+vim.go.updatetime = 1000
+vim.go.expandtab = true
+vim.go.tabstop = 2
+vim.go.shiftwidth = 2
+vim.go.softtabstop = 2
+vim.go.textwidth = 80
+vim.go.swapfile = false
+vim.go.splitright = true
+vim.go.splitbelow = false
+vim.go.signcolumn = "yes"
+vim.go.ignorecase = true
+vim.go.smartcase = true
+vim.go.relativenumber = true
+vim.go.number = true
+
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = [[^\.git\/$]]
 vim.g.netrw_sort_sequence = "\\/$,*"
-vim.o.timeout = true
-vim.o.timeoutlen = 500
+
+vim.go.timeout = true
+vim.go.timeoutlen = 500
 
 local function reload()
   for name, pkg in pairs(package.loaded) do
